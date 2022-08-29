@@ -1,0 +1,41 @@
+app:
+  name: ${project.name}
+  version: ${project.version}
+
+server:
+  servlet:
+    context-path: /usercenter
+
+spring:
+  profiles:
+    active: local-h2
+  main:
+    allow-bean-definition-overriding: true
+
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+          show-components: always
+          show-details: always
+  metrics:
+    enabled: true
+  endpoints:
+    web:
+      exposure:
+        #include: "*"
+        include: health,metrics,prometheus
+
+altair:
+  enabled: true
+  cdn:
+    enabled: false
+    version: latest
+
+voyager:
+  enabled: true
+  cdn:
+    enabled: false
+    version: latest

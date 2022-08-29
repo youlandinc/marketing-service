@@ -1,0 +1,15 @@
+#https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI.html
+version: '3.0'
+
+services:
+  demo:
+    env_file:
+      - ./.env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: java-markting-service:latest
+    container_name: java-markting-service-service
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
+

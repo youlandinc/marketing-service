@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    database: H2
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  redis:
+    host: dev-rediscache.s1prrp.ng.0001.usw1.cache.amazonaws.com
+    database: 1
+
+youland:
+  service:
+    cognito:
+      #dev-pos-userpool
+      awsUserPoolId: "us-west-2_d225vl8rM"
+      localWellKnownJWKS: "cognito/DEV_us-west-2_d225vl8rM_well-known_jwks.json"
+
+    cors:
+      allowOrigins:
+        - http://*
+        - https://*
+    error:
+      printStackTrace: true
+      
+google:
+   client:
+      clientId: 918425391454-tr3mrfhkift48rt5fvs749mebp0kubts.apps.googleusercontent.com      
+
+cloud:
+  aws:
+    region:
+      static: us-west-1

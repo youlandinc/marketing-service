@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+    url: jdbc-secretsmanager:postgresql://proddb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/common-user-center
+    username: rds-db-credentials/cluster-H7F25EPJEXNWCWSGKYSYPRH7ZQ/prodbpos1master
+    driverClassName: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
+  redis:
+    host: dev-rediscache.s1prrp.ng.0001.usw1.cache.amazonaws.com
+    database: 1
+
+youland:
+  service:
+    cognito:
+      #prod-pos-userpool-2
+      awsUserPoolId: "us-west-2_5Omlzqph9"
+      localWellKnownJWKS: "cognito/PROD_us-west-2_5Omlzqph9_well-known_jwks.json"
+
+    cors:
+      allowOrigins:
+        - https://*.youland.com
+        - http://*.youland.com
+        - https://*.youwork.us
+        - http://*.youwork.us
+    error:
+      printStackTrace: true
+
+  simulationmode:
+    overview: false
+    summary: false
+    rate: false
+    
+google:
+   client:
+      clientId: 918425391454-tr3mrfhkift48rt5fvs749mebp0kubts.apps.googleusercontent.com    
+
+cloud:
+  aws:
+    region:
+      static: us-west-1
+
+aws:
+  redis:
+    host: uszipcoderedis-ro.s1prrp.ng.0001.usw1.cache.amazonaws.com
+    port: 6379

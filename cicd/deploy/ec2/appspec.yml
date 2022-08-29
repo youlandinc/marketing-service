@@ -1,0 +1,23 @@
+#ltang: Used by AWS CodeDeploy
+#https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent.html
+version: 0.0
+os: linux
+files:
+  #Do not use ~ b/c of this error: "couldn't find HOME environment -- expanding `~'"
+  #Make sure the destination below matches $DEPLOY_SCRIPT_COPY in before_install.sh
+  - source: /
+    destination: /home/ec2-user/codedeploy/java-markting-service
+hooks:
+  #https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-server
+  ApplicationStop:
+    - location: stop_server.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: install_dependencies.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: start_server.sh
+      timeout: 300
+      runas: root
