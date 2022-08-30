@@ -9,11 +9,11 @@ AWS_DEFAULT_REGION="us-west-1"
 AWS_ACCOUNT_ID="348152033681"
 IMAGE_SERVER="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
 
-IMAGE_REPO_NAME="java-markting-service"
+IMAGE_REPO_NAME="java-marketing-service"
 IMAGE_TAG="latest"
 IMAGE_NAME="$IMAGE_SERVER/$IMAGE_REPO_NAME:$IMAGE_TAG"
 
-CONTAINER_NAME="jjava-markting-service-service"
+CONTAINER_NAME="jjava-marketing-service-service"
 CONTAINER_PORT=8080
 HOST_PORT=8080
 

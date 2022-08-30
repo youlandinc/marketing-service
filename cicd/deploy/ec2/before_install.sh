@@ -8,7 +8,7 @@ source ./settings.sh
 
 #ltang: Clean up the copy of the previous deployment
 #Make sure DEPLOY_SCRIPT_COPY matches "destination" in appspec.yml
-DEPLOY_SCRIPT_COPY="/home/ec2-user/codedeploy/java-markting-service"
+DEPLOY_SCRIPT_COPY="/home/ec2-user/codedeploy/java-marketing-service"
 if [ -d "$DEPLOY_SCRIPT_COPY" ]; then
     rm -rf "$DEPLOY_SCRIPT_COPY"
 fi

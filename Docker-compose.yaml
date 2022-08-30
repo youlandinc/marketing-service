@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: java-markting-service:latest
-    container_name: java-markting-service-service
+    container_name: java-marketing-service-service
     ports:
       - "${HOST_PORT}:${CONTAINER_PORT}"
 

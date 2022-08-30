@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
--   <property name="LOG_PATH" value="logs"/>
+    -   <property name="LOG_PATH" value="logs"/>
 
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
 
@@ -33,108 +33,8 @@
         </encoder>
     </appender>
 
-    <appender name="WEB_BOUNDRY_LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/webBoundry.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${LOG_PATH}/archived/webBoundry.%d.%i.log
-            </fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
-    <appender name="API_BOUNDRY_LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/apiBoundry.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${LOG_PATH}/archived/apiBoundry.%d.%i.log
-            </fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
-    <appender name="SAL_BOUNDRY_LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/salBoundry.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${LOG_PATH}/archived/salBoundry.%d.%i.log
-            </fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
-    <appender name="BIZERROR_BOUNDRY_LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/bizerror.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${LOG_PATH}/archived/bizerror.%d.%i.log
-            </fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
-    <appender name="TRACE_BOUNDRY_LOG"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/trace.log</File>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${LOG_PATH}/archived/trace.%d.%i.log
-            </fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <encoder>
-            <pattern>
-                %d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-            </pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-    </appender>
-
     <!-- Default logger -->
-    <root level="INFO">
+    <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="SYSLOG" />
     </root>
@@ -142,33 +42,4 @@
     <!-- Custom logger per class if needed -->
     <!-- Log requests and responses -->
     <logger name="org.springframework.web" level="DEBUG"/>
-
-    <springProfile name="dev,test,local-h2,local-psql">
-<!--        <root level="INFO">-->
-<!--            <appender-ref ref="STDOUT"/>-->
-<!--            <appender-ref ref="SYSLOG"/>-->
-<!--        </root>-->
-
-        <!-- FATAL > ERROR > WARN > INFO > DEBUG > TRACE -->
-        <logger name="WEB_BOUNDRY_LOG" level="INFO" additivity="false">
-            <appender-ref ref="WEB_BOUNDRY_LOG" />
-        </logger>
-
-        <logger name="API_BOUNDRY_LOG" level="INFO" additivity="false">
-            <appender-ref ref="API_BOUNDRY_LOG" />
-        </logger>
-
-        <logger name="SAL_BOUNDRY_LOG" level="INFO" additivity="false">
-            <appender-ref ref="SAL_BOUNDRY_LOG" />
-        </logger>
-
-        <logger name="TRACE_BOUNDRY_LOG" level="INFO" additivity="false">
-            <appender-ref ref="TRACE_BOUNDRY_LOG" />
-        </logger>
-
-        <logger name="BIZERROR_BOUNDRY_LOG" level="INFO" additivity="false">
-            <appender-ref ref="BIZERROR_BOUNDRY_LOG" />
-        </logger>
-
-    </springProfile>
 </configuration>
