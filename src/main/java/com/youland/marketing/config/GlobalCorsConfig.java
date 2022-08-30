@@ -12,7 +12,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.List;
 
 @Configuration
-@ConfigurationProperties(prefix = "web.cors")
+@ConfigurationProperties(prefix = "spring.web.cors")
 @Data
 public class GlobalCorsConfig {
     private List<String> allowOrigins;
