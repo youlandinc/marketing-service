@@ -1,15 +1,8 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.tool;
+package com.youland.markting.config.base.tool;
 
-import com.youland.markting.config.template.dataobj.CommonResult;
-import com.youland.markting.config.template.enums.ErrorCode;
+import com.youland.markting.config.base.dataobj.CommonResult;
+import com.youland.markting.config.base.enums.ErrorCode;
 
-/**
-* @author yeqiu 
-* 2022/7/27 pm4:19:15
-*/
 public class WebResultBuilder {
 
 	public static <T> CommonResult<T> buildErrorResult(ErrorCode errorCode, String errorMsg){

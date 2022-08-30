@@ -30,49 +30,19 @@ public class UserEntity {
 	@Column(nullable = false, columnDefinition = "varchar", length = 64)
 	private String id;
 	
-	/**
-	 * tenant ID
-	 */
-	@Column(length = 64, nullable = false)
-	private String tenantId;
-	
 	/** 
 	 * user name
 	 */
 	@Column(length = 64)
 	private String userName;
-	
-	/**
-	 * user account
-	 */
-	@Column(length = 64, nullable = false)
-	private String account;
-	
+
+
 	/**
 	 * user email
 	 */
 	@Column(length = 32)
 	private String email;
-	
-	/**
-	 * tenant type
-	 * CUSTOMER/BROKER/SYSMNG
-	 */
-	@Column(length = 32, nullable = false)
-	private String userType;
-	
-	/**
-	 * register&login type
-	 */
-	@Column(length = 32, nullable = false)
-	private String loginType;
-	
-	/**
-	 * user head photo
-	 */
-	@Column(length = 512)
-	private String avatar;
-	
+
 	/**
 	 * user address
 	 */

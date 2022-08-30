@@ -1,4 +1,4 @@
-package com.youland.markting.config.template.enums;
+package com.youland.markting.config.base.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

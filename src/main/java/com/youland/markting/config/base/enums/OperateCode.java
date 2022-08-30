@@ -1,15 +1,8 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.enums;
+package com.youland.markting.config.base.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-/**
-* yeqiu 2022年7月26日 下午3:02:14
-* api operate code
-*/
 @Getter
 @AllArgsConstructor
 public enum OperateCode {

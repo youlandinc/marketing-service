@@ -1,10 +1,7 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.dataobj;
+package com.youland.markting.config.base.dataobj;
 
-import com.youland.markting.config.template.enums.ErrorCode;
-import com.youland.markting.config.template.exception.BizExecuteException;
+import com.youland.markting.config.base.enums.ErrorCode;
+import com.youland.markting.config.base.exception.BizExecuteException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;

@@ -11,9 +11,6 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
 
-/**
- * @author chenning
- */
 @Configuration
 @ConfigurationProperties(prefix = "youland.service.cors")
 @Data

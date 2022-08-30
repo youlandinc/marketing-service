@@ -1,6 +1,6 @@
 package com.youland.markting.controller.standard.request;
 
-import com.youland.markting.config.template.dataobj.BaseRequest;
+import com.youland.markting.config.base.dataobj.BaseRequest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

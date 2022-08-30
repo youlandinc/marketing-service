@@ -5,10 +5,10 @@ import com.youland.markting.controller.standard.response.DemoResponse;
 import org.springframework.stereotype.Service;
 
 import com.youland.markting.service.DemoFacade;
-import com.youland.markting.config.template.BizTemplate;
-import com.youland.markting.config.template.callback.ExeCallBack;
-import com.youland.markting.config.template.dataobj.CommonResult;
-import com.youland.markting.config.template.enums.OperateCode;
+import com.youland.markting.config.base.BizTemplate;
+import com.youland.markting.config.base.callback.ExeCallBack;
+import com.youland.markting.config.base.dataobj.CommonResult;
+import com.youland.markting.config.base.enums.OperateCode;
 
 @Service
 public class DemoFacadeImpl implements DemoFacade {

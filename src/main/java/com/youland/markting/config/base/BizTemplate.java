@@ -1,20 +1,16 @@
-package com.youland.markting.config.template;
+package com.youland.markting.config.base;
 
 
-import com.youland.markting.config.template.callback.ExeCallBack;
-import com.youland.markting.config.template.dataobj.BaseRequest;
-import com.youland.markting.config.template.dataobj.CommonResult;
-import com.youland.markting.config.template.enums.ErrorCode;
-import com.youland.markting.config.template.enums.LogTypeEnum;
-import com.youland.markting.config.template.exception.BizExecuteException;
-import com.youland.markting.config.template.tool.LogPrinter;
-import com.youland.markting.config.template.tool.WebResultBuilder;
+import com.youland.markting.config.base.callback.ExeCallBack;
+import com.youland.markting.config.base.dataobj.BaseRequest;
+import com.youland.markting.config.base.dataobj.CommonResult;
+import com.youland.markting.config.base.enums.ErrorCode;
+import com.youland.markting.config.base.enums.LogTypeEnum;
+import com.youland.markting.config.base.exception.BizExecuteException;
+import com.youland.markting.config.base.tool.LogPrinter;
+import com.youland.markting.config.base.tool.WebResultBuilder;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-/**
- * @author yeqiu
- * biz execute template
- */
 public class BizTemplate {
 
     public static <T extends BaseRequest, R> CommonResult<R> execute(T request, ExeCallBack<T, R> callback) {

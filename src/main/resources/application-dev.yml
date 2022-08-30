@@ -12,7 +12,7 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://testdb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/common_user_center
+    url: jdbc:postgresql://testdb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/markting
     username: ulandmaster
     driverClassName: org.postgresql.Driver
     password: k2G9!Qpr
@@ -35,16 +35,3 @@ youland:
     error:
       printStackTrace: true
 
-  simulationmode:
-    overview: false
-    summary: false
-    rate: false
-    
-google:
-   client:
-      clientId: 918425391454-tr3mrfhkift48rt5fvs749mebp0kubts.apps.googleusercontent.com    
-
-cloud:
-  aws:
-    region:
-      static: us-west-1

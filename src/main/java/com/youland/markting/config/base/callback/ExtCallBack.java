@@ -1,9 +1,6 @@
-/**
- * * Youland.com copyright
- */
-package com.youland.markting.config.template.callback;
+package com.youland.markting.config.base.callback;
 
-import com.youland.markting.config.template.dataobj.CommonResult;
+import com.youland.markting.config.base.dataobj.CommonResult;
 
 public interface ExtCallBack<T, R> extends BaseCallBack<T, R> {
 

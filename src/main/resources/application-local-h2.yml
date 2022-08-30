@@ -39,12 +39,4 @@ youland:
         - https://*
     error:
       printStackTrace: true
-      
-google:
-   client:
-      clientId: 918425391454-tr3mrfhkift48rt5fvs749mebp0kubts.apps.googleusercontent.com      
 
-cloud:
-  aws:
-    region:
-      static: us-west-1

@@ -1,15 +1,9 @@
-package com.youland.markting.config.template;
+package com.youland.markting.config.base;
 
-import com.youland.markting.config.template.callback.SalCallBack;
-import com.youland.markting.config.template.exception.BizExecuteException;
-import com.youland.markting.config.template.tool.LogPrinter;
+import com.youland.markting.config.base.callback.SalCallBack;
+import com.youland.markting.config.base.exception.BizExecuteException;
+import com.youland.markting.config.base.tool.LogPrinter;
 
-/**
- * 
- * @author yeqiu
- * 2022/8/16 pm3:24:23
- * integration boundary template
- */
 public class SalTemplate {
 
     public static <T, R> R invoke(T request, SalCallBack<T, R> callback) {

@@ -4,9 +4,9 @@ package com.youland.markting.controller.standard;
 import com.youland.markting.controller.standard.request.DemoRequest;
 import com.youland.markting.controller.standard.response.DemoResponse;
 import com.youland.markting.service.DemoFacade;
-import com.youland.markting.config.template.WebTemplate;
-import com.youland.markting.config.template.callback.ExtCallBack;
-import com.youland.markting.config.template.dataobj.CommonResult;
+import com.youland.markting.config.base.WebTemplate;
+import com.youland.markting.config.base.callback.ExtCallBack;
+import com.youland.markting.config.base.dataobj.CommonResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

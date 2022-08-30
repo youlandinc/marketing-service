@@ -1,7 +1,4 @@
-/**
- * * Youland.com copyright
- */
-package com.youland.markting.config.template.tool;
+package com.youland.markting.config.base.tool;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -17,18 +14,14 @@ import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
-import com.youland.markting.config.template.enums.ErrorCode;
-import com.youland.markting.config.template.exception.BizExecuteException;
+import com.youland.markting.config.base.enums.ErrorCode;
+import com.youland.markting.config.base.exception.BizExecuteException;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-/**
- * @author yeqiu 
- * 2022/7/27 pm5:07:09
- */
 public class AssertUtil {
 
     public static void validate(Object value, ErrorCode errorCode) {

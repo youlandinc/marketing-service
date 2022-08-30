@@ -1,8 +1,8 @@
-package com.youland.markting.config.template.dataobj;
+package com.youland.markting.config.base.dataobj;
 
 import java.util.UUID;
 
-import com.youland.markting.config.template.enums.OperateCode;
+import com.youland.markting.config.base.enums.OperateCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

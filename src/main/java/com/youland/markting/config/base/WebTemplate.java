@@ -1,12 +1,9 @@
-/**
- * * Youland.com copyright
- */
-package com.youland.markting.config.template;
+package com.youland.markting.config.base;
 
-import com.youland.markting.config.template.callback.ExtCallBack;
-import com.youland.markting.config.template.dataobj.CommonResult;
-import com.youland.markting.config.template.exception.BizExecuteException;
-import com.youland.markting.config.template.tool.LogPrinter;
+import com.youland.markting.config.base.callback.ExtCallBack;
+import com.youland.markting.config.base.dataobj.CommonResult;
+import com.youland.markting.config.base.exception.BizExecuteException;
+import com.youland.markting.config.base.tool.LogPrinter;
 
 public class WebTemplate {
 

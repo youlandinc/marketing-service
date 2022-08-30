@@ -143,16 +143,13 @@
     <!-- Log requests and responses -->
     <logger name="org.springframework.web" level="DEBUG"/>
 
-    <!-- 按发布环境，控制激活的日志级别 -->
     <springProfile name="dev,test,local-h2,local-psql">
-        <!-- 控制台输出日志级别 -->
 <!--        <root level="INFO">-->
 <!--            <appender-ref ref="STDOUT"/>-->
 <!--            <appender-ref ref="SYSLOG"/>-->
 <!--        </root>-->
 
-        <!-- 定项目中某个包,eg：cn.henry.study为根包，也就是只要是发生在这个根包下面的所有日志操作行为的权限都是INFO -->
-        <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE -->
+        <!-- FATAL > ERROR > WARN > INFO > DEBUG > TRACE -->
         <logger name="WEB_BOUNDRY_LOG" level="INFO" additivity="false">
             <appender-ref ref="WEB_BOUNDRY_LOG" />
         </logger>
@@ -173,6 +170,5 @@
             <appender-ref ref="BIZERROR_BOUNDRY_LOG" />
         </logger>
 
-        <!-- mybatis loggers 可以按包的层级指定不同的日志级别 -->
     </springProfile>
 </configuration>

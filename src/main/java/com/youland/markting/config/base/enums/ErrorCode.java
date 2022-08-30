@@ -1,17 +1,11 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.enums;
+package com.youland.markting.config.base.enums;
 
 import com.youland.commons.constant.BusinessExceptionAssert;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-/**
-* yeqiu 2022年7月26日 下午3:17:50
-* biz error code
-*/
+
 @Getter
 @AllArgsConstructor
 public enum ErrorCode implements BusinessExceptionAssert {

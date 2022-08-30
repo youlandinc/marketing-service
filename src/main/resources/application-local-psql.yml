@@ -12,7 +12,7 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/common-user-center
+    url: jdbc:postgresql://localhost:5432/markting
     username: postgres
     password: hhahh
     driverClassName: org.postgresql.Driver
@@ -34,13 +34,3 @@ youland:
         - https://*
     error:
       printStackTrace: true
-      
-google:
-   client:
-      clientId: 918425391454-tr3mrfhkift48rt5fvs749mebp0kubts.apps.googleusercontent.com
-      
-
-cloud:
-  aws:
-    region:
-      static: us-west-1

@@ -2,7 +2,7 @@ package com.youland.markting.service;
 
 import com.youland.markting.controller.standard.request.DemoRequest;
 import com.youland.markting.controller.standard.response.DemoResponse;
-import com.youland.markting.config.template.dataobj.CommonResult;
+import com.youland.markting.config.base.dataobj.CommonResult;
 
 public interface DemoFacade {
 

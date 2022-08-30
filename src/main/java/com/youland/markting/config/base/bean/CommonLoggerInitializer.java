@@ -1,9 +1,6 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.bean;
+package com.youland.markting.config.base.bean;
 
-import com.youland.markting.config.template.enums.LogTypeEnum;
+import com.youland.markting.config.base.enums.LogTypeEnum;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,19 +1,12 @@
-/**
-** Youland.com copyright
-*/
-package com.youland.markting.config.template.exception;
+package com.youland.markting.config.base.exception;
 
 import java.text.MessageFormat;
 
 import com.youland.commons.exception.BaseException;
-import com.youland.markting.config.template.enums.ErrorCode;
+import com.youland.markting.config.base.enums.ErrorCode;
 
 import lombok.Getter;
 
-/**
-* yeqiu 2022/7/26 pm3:08:12
-* system customize exception
-*/
 @Getter
 public class BizExecuteException extends BaseException {
 

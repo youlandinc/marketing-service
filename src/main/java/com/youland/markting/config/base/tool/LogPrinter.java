@@ -1,11 +1,11 @@
 
-package com.youland.markting.config.template.tool;
+package com.youland.markting.config.base.tool;
 
 import cn.hutool.extra.spring.SpringUtil;
-import com.youland.markting.config.template.bean.CommonLoggerInitializer;
-import com.youland.markting.config.template.dataobj.LogEntry;
-import com.youland.markting.config.template.dataobj.TraceId;
-import com.youland.markting.config.template.enums.LogTypeEnum;
+import com.youland.markting.config.base.bean.CommonLoggerInitializer;
+import com.youland.markting.config.base.dataobj.LogEntry;
+import com.youland.markting.config.base.dataobj.TraceId;
+import com.youland.markting.config.base.enums.LogTypeEnum;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 

@@ -1,6 +1,5 @@
 package com.youland.markting.config;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -18,9 +17,7 @@ import com.youland.commons.model.ErrorResponse;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * @author chenning
- */
+
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
