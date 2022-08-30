@@ -2,11 +2,8 @@ package com.youland.markting;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@Import(cn.hutool.extra.spring.SpringUtil.class)
 @SpringBootApplication(scanBasePackages = "com.youland")
 @EnableScheduling
 public class App {

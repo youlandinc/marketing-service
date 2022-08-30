@@ -1,0 +1,107 @@
+30-08-2022 10:59:07.285 [main] INFO  com.youland.markting.App.logStarting - Starting App using Java 17 on chenning-deiMac.local with PID 4077 (/Users/chenning/IdeaProjects/markting-service/build/classes/java/main started by chenning in /Users/chenning/IdeaProjects/markting-service)
+30-08-2022 10:59:07.286 [main] INFO  com.youland.markting.App.logStartupProfileInfo - The following 1 profile is active: "local-h2"
+30-08-2022 10:59:07.328 [main] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.logTo - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+30-08-2022 10:59:08.065 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+30-08-2022 10:59:08.171 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 99 ms. Found 1 JPA repository interfaces.
+30-08-2022 10:59:08.619 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+30-08-2022 10:59:08.631 [main] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+30-08-2022 10:59:08.632 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.65]
+30-08-2022 10:59:08.758 [main] INFO  o.a.c.c.C.[.[.[/usercenter].log - Initializing Spring embedded WebApplicationContext
+30-08-2022 10:59:08.759 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1431 ms
+30-08-2022 10:59:08.897 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+30-08-2022 10:59:09.124 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+30-08-2022 10:59:09.133 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration.logDataSources - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+30-08-2022 10:59:09.211 [main] DEBUG o.s.web.filter.CorsFilter.init - Filter 'corsFilter' configured for use
+30-08-2022 10:59:09.270 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+30-08-2022 10:59:09.320 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.10.Final
+30-08-2022 10:59:09.459 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+30-08-2022 10:59:09.550 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+30-08-2022 10:59:10.014 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+30-08-2022 10:59:10.022 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 10:59:10.362 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+30-08-2022 10:59:10.427 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter.initControllerAdviceCache - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+30-08-2022 10:59:10.484 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping.handlerMethodsInitialized - 11 mappings in 'requestMappingHandlerMapping'
+30-08-2022 10:59:10.788 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping.logMappings - Patterns [/webjars/**, /**, /swagger-ui*/**] in 'resourceHandlerMapping'
+30-08-2022 10:59:10.799 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+30-08-2022 10:59:11.092 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver.<init> - Exposing 3 endpoint(s) beneath base path '/actuator'
+30-08-2022 10:59:11.130 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path '/usercenter'
+30-08-2022 10:59:11.145 [main] INFO  com.youland.markting.App.logStarted - Started App in 4.257 seconds (JVM running for 5.092)
+30-08-2022 10:59:11.600 [RMI TCP Connection(3)-192.168.1.102] INFO  o.a.c.c.C.[.[.[/usercenter].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+30-08-2022 10:59:11.600 [RMI TCP Connection(3)-192.168.1.102] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+30-08-2022 10:59:11.600 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initMultipartResolver - Detected StandardServletMultipartResolver
+30-08-2022 10:59:11.600 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initLocaleResolver - Detected AcceptHeaderLocaleResolver
+30-08-2022 10:59:11.600 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initThemeResolver - Detected FixedThemeResolver
+30-08-2022 10:59:11.601 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initRequestToViewNameTranslator - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@76c2d002
+30-08-2022 10:59:11.602 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initFlashMapManager - Detected org.springframework.web.servlet.support.SessionFlashMapManager@795e8ef5
+30-08-2022 10:59:11.602 [RMI TCP Connection(3)-192.168.1.102] DEBUG o.s.web.servlet.DispatcherServlet.initServletBean - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+30-08-2022 10:59:11.602 [RMI TCP Connection(3)-192.168.1.102] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 2 ms
+30-08-2022 11:01:42.927 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 11:01:43.315 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter.destroy - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+30-08-2022 11:01:43.317 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+30-08-2022 11:01:43.372 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+30-08-2022 11:04:07.456 [main] INFO  com.youland.markting.App.logStarting - Starting App using Java 17 on chenning-deiMac.local with PID 4330 (/Users/chenning/IdeaProjects/markting-service/build/classes/java/main started by chenning in /Users/chenning/IdeaProjects/markting-service)
+30-08-2022 11:04:07.458 [main] INFO  com.youland.markting.App.logStartupProfileInfo - The following 1 profile is active: "local-h2"
+30-08-2022 11:04:07.497 [main] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor.logTo - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+30-08-2022 11:04:08.178 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+30-08-2022 11:04:08.310 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 119 ms. Found 1 JPA repository interfaces.
+30-08-2022 11:04:08.734 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+30-08-2022 11:04:08.743 [main] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+30-08-2022 11:04:08.743 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.65]
+30-08-2022 11:04:08.846 [main] INFO  o.a.c.c.C.[.[localhost].[/marketing].log - Initializing Spring embedded WebApplicationContext
+30-08-2022 11:04:08.847 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1349 ms
+30-08-2022 11:04:08.963 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+30-08-2022 11:04:09.161 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+30-08-2022 11:04:09.169 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration.logDataSources - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+30-08-2022 11:04:09.242 [main] DEBUG o.s.web.filter.CorsFilter.init - Filter 'corsFilter' configured for use
+30-08-2022 11:04:09.291 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+30-08-2022 11:04:09.336 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.10.Final
+30-08-2022 11:04:09.468 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+30-08-2022 11:04:09.561 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+30-08-2022 11:04:09.993 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+30-08-2022 11:04:10.000 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 11:04:10.323 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+30-08-2022 11:04:10.383 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter.initControllerAdviceCache - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+30-08-2022 11:04:10.438 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping.handlerMethodsInitialized - 11 mappings in 'requestMappingHandlerMapping'
+30-08-2022 11:04:10.710 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping.logMappings - Patterns [/webjars/**, /**, /swagger-ui*/**] in 'resourceHandlerMapping'
+30-08-2022 11:04:10.722 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+30-08-2022 11:04:11.024 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver.<init> - Exposing 3 endpoint(s) beneath base path '/actuator'
+30-08-2022 11:04:11.066 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path '/marketing'
+30-08-2022 11:04:11.081 [main] INFO  com.youland.markting.App.logStarted - Started App in 4.009 seconds (JVM running for 4.646)
+30-08-2022 11:04:11.240 [RMI TCP Connection(1)-127.0.0.1] INFO  o.a.c.c.C.[.[localhost].[/marketing].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+30-08-2022 11:04:11.241 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+30-08-2022 11:04:11.241 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initMultipartResolver - Detected StandardServletMultipartResolver
+30-08-2022 11:04:11.241 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initLocaleResolver - Detected AcceptHeaderLocaleResolver
+30-08-2022 11:04:11.241 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initThemeResolver - Detected FixedThemeResolver
+30-08-2022 11:04:11.242 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initRequestToViewNameTranslator - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@12ebcdf6
+30-08-2022 11:04:11.242 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initFlashMapManager - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3a286095
+30-08-2022 11:04:11.242 [RMI TCP Connection(1)-127.0.0.1] DEBUG o.s.web.servlet.DispatcherServlet.initServletBean - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+30-08-2022 11:04:11.243 [RMI TCP Connection(1)-127.0.0.1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 2 ms
+30-08-2022 11:05:56.308 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 11:05:56.686 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter.destroy - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+30-08-2022 11:05:56.688 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+30-08-2022 11:05:56.743 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+30-08-2022 11:10:46.127 [Test worker] INFO  com.youland.markting.test.AppTests.logStarting - Starting AppTests using Java 17 on chenning-deiMac.local with PID 4495 (started by chenning in /Users/chenning/IdeaProjects/markting-service)
+30-08-2022 11:10:46.129 [Test worker] INFO  com.youland.markting.test.AppTests.logStartupProfileInfo - The following 1 profile is active: "local-h2"
+30-08-2022 11:10:46.162 [Test worker] DEBUG o.s.w.c.s.GenericWebApplicationContext.prepareRefresh - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@252f626c
+30-08-2022 11:10:47.101 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+30-08-2022 11:10:47.236 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 126 ms. Found 1 JPA repository interfaces.
+30-08-2022 11:10:47.861 [Test worker] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+30-08-2022 11:10:47.898 [Test worker] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.10.Final
+30-08-2022 11:10:48.028 [Test worker] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+30-08-2022 11:10:48.126 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+30-08-2022 11:10:48.299 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+30-08-2022 11:10:48.313 [Test worker] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+30-08-2022 11:10:48.849 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+30-08-2022 11:10:48.856 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 11:10:49.713 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+30-08-2022 11:10:50.076 [Test worker] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter.initControllerAdviceCache - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+30-08-2022 11:10:50.114 [Test worker] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration.logDataSources - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+30-08-2022 11:10:50.191 [Test worker] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping.handlerMethodsInitialized - 11 mappings in 'requestMappingHandlerMapping'
+30-08-2022 11:10:51.133 [Test worker] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping.logMappings - Patterns [/webjars/**, /**, /swagger-ui*/**] in 'resourceHandlerMapping'
+30-08-2022 11:10:51.149 [Test worker] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+30-08-2022 11:10:51.709 [Test worker] INFO  o.s.b.a.e.web.EndpointLinksResolver.<init> - Exposing 2 endpoint(s) beneath base path '/actuator'
+30-08-2022 11:10:51.770 [Test worker] INFO  com.youland.markting.test.AppTests.logStarted - Started AppTests in 6.184 seconds (JVM running for 7.269)
+30-08-2022 11:10:52.383 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext.doClose - Closing org.springframework.web.context.support.GenericWebApplicationContext@252f626c, started on Tue Aug 30 11:10:46 CST 2022
+30-08-2022 11:10:52.397 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+30-08-2022 11:10:52.399 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+30-08-2022 11:10:52.408 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.

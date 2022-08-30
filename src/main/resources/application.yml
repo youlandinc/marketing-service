@@ -4,7 +4,7 @@ app:
 
 server:
   servlet:
-    context-path: /usercenter
+    context-path: /marketing
 
 spring:
   profiles:

@@ -1,7 +1,8 @@
 package com.youland.markting.config;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.youland.markting.model.ErrorResponse;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -11,11 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.youland.commons.exception.BaseException;
-import com.youland.commons.model.ErrorResponse;
-
-import lombok.NonNull;
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
 
 
 @Slf4j
@@ -42,17 +39,12 @@ public class GlobalExceptionHandler {
         if (printStackTrace) {
             stackTrace = ExceptionUtils.getStackTrace(exception);
         }
-
-        String errorCode = null;
-        if (exception instanceof BaseException) {
-            errorCode = ((BaseException) exception).getErrorCode();
-        }
         
         var response =
                 ErrorResponse.builder()
                         .type(code.name())
                         .status(code.value())
-                        .code(errorCode)
+                        .code(null)
                         .message(exception.getLocalizedMessage())
                         .instance(uri)
                         .stackTrace(stackTrace)

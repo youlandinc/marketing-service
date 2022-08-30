@@ -26,13 +26,7 @@ spring:
     host: dev-rediscache.s1prrp.ng.0001.usw1.cache.amazonaws.com
     database: 1
 
-youland:
-  service:
-    cognito:
-      #dev-pos-userpool
-      awsUserPoolId: "us-west-2_d225vl8rM"
-      localWellKnownJWKS: "cognito/DEV_us-west-2_d225vl8rM_well-known_jwks.json"
-
+  web:
     cors:
       allowOrigins:
         - http://*

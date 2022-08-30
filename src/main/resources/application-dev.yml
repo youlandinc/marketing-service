@@ -20,18 +20,10 @@ spring:
     host: dev-rediscache.s1prrp.ng.0001.usw1.cache.amazonaws.com
     database: 1
 
-youland:
-  service:
-    cognito:
-      #dev-pos-userpool-2
-      awsUserPoolId: "us-west-2_d225vl8rM"
-      #local copy of https://cognito-idp.us-west-2.amazonaws.com/us-west-2_J9K0jgkly/.well-known/jwks.json
-      localWellKnownJWKS: "cognito/DEV_us-west-2_d225vl8rM_well-known_jwks.json"
-
+  web:
     cors:
       allowOrigins:
         - http://*
         - https://*
     error:
       printStackTrace: true
-
