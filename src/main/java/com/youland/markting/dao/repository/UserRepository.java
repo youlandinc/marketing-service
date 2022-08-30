@@ -8,8 +8,4 @@ import com.youland.markting.dao.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
 
-	UserEntity findByTenantIdAndEmailAndLoginType(String tenantId, String email, String loginType);
-
-	UserEntity findByTenantIdAndId(String tenantId, String userId);
-
 }

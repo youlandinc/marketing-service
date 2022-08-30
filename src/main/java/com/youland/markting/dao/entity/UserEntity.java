@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "yl_oss_user", uniqueConstraints = @UniqueConstraint(columnNames= {"tenantId", "email", "loginType"}))
+@Table(name = "yl_oss_user")
 @Schema
 @Builder
 @AllArgsConstructor

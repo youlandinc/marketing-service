@@ -34,3 +34,8 @@ youland:
         - http://*.youwork.us
     error:
       printStackTrace: true
+
+cloud:
+  aws:
+    region:
+      static: us-west-1
