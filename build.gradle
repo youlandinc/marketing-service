@@ -45,9 +45,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     // AWS SecretsManger
     implementation "com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:${secretsmanagerVersion}"
-    // AWS Simple Email Service AND SecretsManger
+    // AWS Simple Email Service
     implementation platform("software.amazon.awssdk:bom:${awsSdkVersion}")
-//    implementation 'software.amazon.awssdk:secretsmanager'
     implementation 'software.amazon.awssdk:ses'
 
     // Microsoft
@@ -74,8 +73,6 @@ dependencies {
 
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-
 }
 
 processResources {
