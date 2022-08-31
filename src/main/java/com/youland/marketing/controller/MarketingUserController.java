@@ -12,7 +12,7 @@ import java.util.List;
  * @author chenning
  */
 @RestController
-@RequestMapping("/contact/user")
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class MarketingUserController {
     private final IMarketingUserService marketingUserService;
@@ -27,4 +27,8 @@ public class MarketingUserController {
         return marketingUserService.getMarketingUserList();
     }
 
+    @PutMapping("/unsubscribe/{email}")
+    public void unsubscribe(@PathVariable String email) {
+
+    }
 }

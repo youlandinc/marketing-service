@@ -5,7 +5,7 @@ FROM eclipse-temurin:17.0.3_7-jre
 # set work directory
 WORKDIR /app
 
-ARG PROJECT_NAME=markting-service
+ARG PROJECT_NAME=marketing-service
 ARG JAR_FILE=build/libs/${PROJECT_NAME}-*.jar
 
 # https://vsupalov.com/docker-arg-env-variable-guide/#setting-env-values
