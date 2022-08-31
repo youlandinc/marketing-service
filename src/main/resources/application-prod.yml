@@ -12,7 +12,7 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc-secretsmanager:postgresql://proddb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/markting
+    url: jdbc-secretsmanager:postgresql://proddb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/marketing
     username: rds-db-credentials/cluster-H7F25EPJEXNWCWSGKYSYPRH7ZQ/prodbpos1master
     driverClassName: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
   redis:

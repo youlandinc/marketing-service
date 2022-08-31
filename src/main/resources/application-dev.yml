@@ -12,7 +12,7 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://testdb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/markting
+    url: jdbc:postgresql://testdb-pos-1.cluster-cjurcg0zx8s1.us-west-1.rds.amazonaws.com:5432/dev_marketing
     username: ulandmaster
     driverClassName: org.postgresql.Driver
     password: k2G9!Qpr
