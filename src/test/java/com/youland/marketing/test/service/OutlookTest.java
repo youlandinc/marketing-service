@@ -1,11 +1,15 @@
 package com.youland.marketing.test.service;
 
+import cn.hutool.core.lang.Dict;
 import com.azure.identity.ClientSecretCredential;
 import com.azure.identity.ClientSecretCredentialBuilder;
 import com.google.common.collect.Lists;
 import com.microsoft.graph.authentication.TokenCredentialAuthProvider;
 import com.microsoft.graph.models.*;
 import com.microsoft.graph.requests.GraphServiceClient;
+import com.youland.marketing.dao.entity.EmailUser;
+import com.youland.marketing.model.EmailSender;
+import com.youland.marketing.util.EmailUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIf;
 
@@ -88,5 +92,25 @@ public class OutlookTest {
                         .build())
                 .buildRequest()
                 .post();
+    }
+
+    @Test
+    void send_template_email() {
+        EmailSender sender = new EmailSender("9de72f85-d7f7-478f-b88d-0f423d4b248a", "Ning Chen",
+                "ning@youland.com", "1-833-968-5263");
+        EmailUser emailUser = new EmailUser();
+        emailUser.setName("Rico");
+        emailUser.setEmail("rico@youland.com");
+        emailUser.setTemplate("英文");
+
+        boolean isCN = "中文".equals(emailUser.getTemplate());
+        String templateName = isCN ? "index_cn.html" : "index.html";
+        String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
+        Dict context = Dict.create()
+                .set("name", emailUser.getName())
+                .set("phone", sender.tel())
+                .set("email", sender.email());
+
+        EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
     }
 }

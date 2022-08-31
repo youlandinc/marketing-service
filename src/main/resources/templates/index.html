@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -338,7 +340,7 @@
         <a href="https://www.youland.com" target="_blank">www.youland.com</a>
       </header>
       <main>
-        <p class="title h2">Hello {Tim},</p>
+        <p class="title h2" th:text="'Hello '+${name}+','"></p>
         <div class="info">
           <object
             data="https://d286fx9lm3ae7t.cloudfront.net/icons/logo_black.svg"
@@ -471,7 +473,7 @@
             ></object>
           </div>
         </div>
-        <p class="subTitle">Call : ${phone} | ${email}</p>
+        <p class="subTitle" th:text="'Call : '+${phone}+' | '+${email}"></p>
         <p class="subTitle2">NMLS ID 2090196</p>
         <a class="subTitle2">Unsubscribe</a>
       </footer>

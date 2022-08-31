@@ -46,6 +46,7 @@ public final class EmailUtil {
         );
         Template template = engine.getTemplate(templateName);
         String content = template.render(context);
+        System.out.println(content);
         sendOutlookEmail(sender.email(), to, null, subject, content);
     }
 

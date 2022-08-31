@@ -17,5 +17,5 @@ public class EmailUser {
     private String name;
     private String email;
     private String template;
-    private Boolean subscribe;
+    private Boolean unsubscribe;
 }
