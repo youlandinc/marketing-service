@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: 'Avenir';
+        src: url('https://d286fx9lm3ae7t.cloudfront.net/css/fonts/AvenirNextFont.ttf');
+      }
+      @font-face {
+        font-family: 'AvenirDemiBold';
+        src: url('https://d286fx9lm3ae7t.cloudfront.net/css/fonts/AvenirNextDemiBold.ttf');
+      }
+
+      @font-face {
+        font-family: 'AvenirBold';
+        src: url('https://d286fx9lm3ae7t.cloudfront.net/css/fonts/AvenirNextBold.ttf');
+      }
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: Avenir;
+        font-size: 24px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      *,
+      ::before,
+      ::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      /* ---14 */
+
+      .subTitle2 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+      }
+
+      /* --18 */
+      .subTitle {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 150%;
+      }
+
+      /* ---24 */
+      .h5-normal {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 150%;
+      }
+
+      .h5-bold {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 150%;
+        font-family: AvenirBold;
+        color: #0b255b;
+      }
+
+      .h5-demiBold {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 120%;
+      }
+
+      /* ----32
+       */
+      .h4-normal {
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 150%;
+      }
+
+      .h4-bold {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 150%;
+      }
+
+      /* ---48 */
+      .h3 {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 120%;
+      }
+
+      /* ---50 */
+      .h2 {
+        font-weight: 700;
+        font-size: 50px;
+        color: #fff;
+        text-align: center;
+        line-height: 154px;
+        font-family: AvenirBold;
+      }
+
+      /* ----64 */
+      .h1 {
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 120%;
+        font-family: AvenirBold;
+        color: #0b255b;
+      }
+      .btn {
+        display: inline-block;
+        padding: 20px 60px;
+        background-color: #f0a533;
+        color: #fff;
+        border: none;
+        box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.15);
+      }
+      .content {
+        width: 800px;
+        margin: 0 auto;
+        padding-top: 80px;
+      }
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+      .header a:first-of-type {
+        display: inline-block;
+        width: 211px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .header > p {
+        color: #156efa;
+        text-align: center;
+        padding-bottom: 40px;
+      }
+      .header a {
+        text-decoration: underline;
+        color: #156efa;
+      }
+      .title {
+        height: 154px;
+        background: #0b255b;
+        margin-bottom: 20px;
+        margin-top: 40px;
+      }
+      .info {
+        background: #e5f1fd;
+      }
+      .logo_black {
+        margin: 67px 0 0 63px;
+      }
+      .loan {
+        background-image: url('https://d286fx9lm3ae7t.cloudfront.net/images/pic01.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+        height: 370px;
+        position: relative;
+        background-size: contain;
+      }
+      .loan-text {
+        position: absolute;
+        bottom: 18px;
+        left: 60px;
+      }
+      .rate {
+        height: 303px;
+        background-image: url('https://d286fx9lm3ae7t.cloudfront.net/images/pic02_cn.png');
+        background-repeat: no-repeat;
+        background-position: center left;
+        margin-left: 60px;
+        position: relative;
+        background-size: contain;
+      }
+      .rate-text {
+        font-family: AvenirBold;
+        color: #fff;
+        transform: rotateZ(-11deg) translateY(63px) translateX(20px);
+        display: inline-block;
+        animation: heartBeat 3s linear infinite;
+      }
+      .rate-discount {
+        position: absolute;
+        right: 72px;
+        bottom: 0px;
+        color: #0b255b;
+      }
+      .rate-discount strong {
+        font-size: 130px;
+        font-family: AvenirDemiBold;
+        line-height: 1;
+      }
+      .rate-num {
+        display: inline-block;
+        animation: heartBeat2 1.5s linear infinite;
+      }
+      .rate-discount span {
+        font-family: AvenirDemiBold;
+        color: #0b255b;
+      }
+      .rate-discount strong,
+      .rate-discount span {
+        text-shadow: 1px 1px 0 #ccc, 2px 2px 0 #ccc,
+          /* end of 2 level deep grey shadow */ 3px 3px 0 #f0a533,
+          4px 4px 0 #f0a533, 5px 5px 0 #f0a533, 6px 6px 0 #f0a533; /* end of 4 level deep dark shadow */
+      }
+      .broker {
+        color: #0b255b;
+        text-align: center;
+        padding-top: 10px;
+      }
+      .broker-num {
+        display: inline-block;
+        animation: heartBeat 3s linear infinite;
+      }
+      .broker a {
+        margin-top: 40px;
+      }
+      .notice {
+        text-align: center;
+      }
+      .notice p {
+        color: #0b255b;
+        padding: 40px 0 20px 0;
+      }
+      .notice a {
+        margin: 40px 0 80px 0;
+      }
+      .notice ul {
+        list-style: inside;
+        color: #0b255b;
+        text-align: left;
+        margin: 0 auto;
+        width: 650px;
+      }
+      .notice ul li {
+        padding-bottom: 10px;
+      }
+      .notice ul:last-of-type li {
+        width: 50%;
+        float: left;
+      }
+
+      .footer {
+        height: 351px;
+        background: #0b255b;
+        margin-top: 20px;
+      }
+      .media {
+        display: flex;
+        justify-content: center;
+        padding-top: 80px;
+        line-height: 0;
+      }
+      .media-box {
+        position: relative;
+        margin-right: 20px;
+      }
+      .media-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+      }
+
+      .footer p:first-of-type,
+      .footer p:last-of-type,
+      .footer a,
+      .footer {
+        text-align: center;
+        color: #e0e4e8;
+      }
+      .footer p:first-of-type {
+        padding-top: 40px;
+      }
+      .footer p:last-of-type {
+        padding-top: 10px;
+        padding-bottom: 40px;
+      }
+      .footer a {
+        display: inline-block;
+
+        text-decoration: underline;
+      }
+      @keyframes heartBeat {
+        0%,
+        50%,
+        100% {
+          opacity: 1;
+        }
+        25%,
+        75% {
+          opacity: 0;
+        }
+      }
+      @keyframes heartBeat2 {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        50% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <header class="header">
+        <a href="https://www.youland.com" target="_blank"></a>
+        <object
+          data="https://d286fx9lm3ae7t.cloudfront.net/icons/logo.svg"
+        ></object>
+        <p style="padding: 20px 0 10px 0">让所有人都能获得抵押贷款。</p>
+        <a href="https://www.youland.com" target="_blank">www.youland.com</a>
+      </header>
+      <main>
+        <p class="title h2">您好 {Tim},</p>
+        <div class="info">
+          <object
+            data="https://d286fx9lm3ae7t.cloudfront.net/icons/logo_black.svg"
+            class="logo_black"
+          ></object>
+          <div class="loan">
+            <div class="loan-text">
+              <p class="h1">过桥贷款</p>
+              <p class="h5-bold">不要让时间或金钱拖慢你的脚步。</p>
+            </div>
+          </div>
+          <div class="rate">
+            <span class="rate-text h3 animate__flash">秋季促销活动</span>
+            <div class="rate-discount">
+              <p>特价折扣</p>
+              <strong class="rate-num">8.99</strong
+              ><span class="h2" style="padding-left: 10px">%</span>
+            </div>
+          </div>
+          <div class="broker">
+            <p class="h4-normal">- 经纪人特别优惠 -</p>
+            <p class="h4-bold">
+              贷款人费用低至
+              <strong class="broker-num">1% ! </strong>
+            </p>
+            <p class="h4-normal">- 无费率调整 -</p>
+            <p class="h4-bold">秋季促销期间豁免</p>
+            <a
+              class="btn h5-normal"
+              href="https://www.youland.com/bridge/"
+              target="_blank"
+              >查看更多</a
+            >
+          </div>
+          <div class="notice">
+            <img
+              src="https://d286fx9lm3ae7t.cloudfront.net/images/pic03_cn.png"
+              alt=""
+              width="100%"
+            />
+            <p class="h3" style="font-family: AvenirDemiBold">
+              至尊服务
+              <object
+                data="https://d286fx9lm3ae7t.cloudfront.net/icons/primary.svg"
+              ></object>
+            </p>
+            <ul class="h4-normal">
+              <li>7个工作日内完成</li>
+              <li>LTV最高可达75%</li>
+              <li>FICO低至640</li>
+              <li>贷款额区间：15万-300万</li>
+              <li>3-24 个月 (没有提前还款罚金)</li>
+            </ul>
+            <p class="h3" style="font-family: AvenirDemiBold">
+              这些统统不需要
+              <object
+                data="https://d286fx9lm3ae7t.cloudfront.net/icons/error.svg"
+              ></object>
+            </p>
+            <ul class="h4-normal">
+              <li>不需要收入证明</li>
+              <li>不需要就业证明</li>
+              <li>不需要DTI</li>
+              <li>不需要DSCR</li>
+            </ul>
+            <a
+              class="btn h5-normal"
+              href="https://www.youland.com/bridge/rate/"
+              target="_blank"
+              >立即查看您的利率</a
+            >
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="media">
+          <div class="media-box">
+            <a
+              class="media-link"
+              href=" https://twitter.com/YouLand_Inc"
+              target="_blank"
+            ></a>
+            <object
+              data="https://d286fx9lm3ae7t.cloudfront.net/icons/twitter.svg"
+            ></object>
+          </div>
+          <div class="media-box">
+            <a
+              class="media-link"
+              href="https://www.youtube.com/channel/UCUWshfzmbqWktFMaHwyw5Uw"
+              target="_blank"
+            >
+            </a>
+            <object
+              data="https://d286fx9lm3ae7t.cloudfront.net/icons/youtube.svg"
+            ></object>
+          </div>
+          <div class="media-box">
+            <a
+              class="media-link"
+              href="https://www.facebook.com/YouLand-984516721727740"
+              target="_blank"
+            >
+            </a>
+            <object
+              data="https://d286fx9lm3ae7t.cloudfront.net/icons/facebook.svg"
+            ></object>
+          </div>
+          <div class="media-box">
+            <a
+              class="media-link"
+              href="https://www.linkedin.com/company/youland"
+              target="_blank"
+            >
+            </a>
+            <object
+              data="https://d286fx9lm3ae7t.cloudfront.net/icons/LinkedIn.svg"
+            ></object>
+          </div>
+          <div class="media-box">
+            <a
+              class="media-link"
+              href="https://www.zillow.com/lender-profile/youlandinc/"
+              target="_blank"
+            >
+            </a>
+            <object
+              data="https://d286fx9lm3ae7t.cloudfront.net/icons/zillow.svg"
+            ></object>
+          </div>
+        </div>
+        <p class="subTitle">Call : ${phone} | ${email}</p>
+        <p class="subTitle2">NMLS ID 2090196</p>
+        <a class="subTitle2">退订</a>
+      </footer>
+    </div>
+  </body>
+</html>
