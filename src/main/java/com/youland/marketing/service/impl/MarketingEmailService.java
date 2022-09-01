@@ -6,6 +6,7 @@ import com.youland.marketing.dao.repository.EmailUserRepository;
 import com.youland.marketing.model.EmailSender;
 import com.youland.marketing.service.IMarketingEmailService;
 import com.youland.marketing.util.EmailUtil;
+import com.youland.marketing.util.JsonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -28,9 +31,10 @@ public class MarketingEmailService implements IMarketingEmailService {
     private final EmailUserRepository emailUserRepository;
     private final StringRedisTemplate redisTemplate;
 
-    private static final String SERIAL_KEY = "serialNumber";
-    private static final String EFFECTIVE_KEY = "effectiveNumber";
-    private static final String LIMIT_KEY = "limitNumber";
+    private static final String TO_ID_KEY = "email_user_id";
+    private static final String TOTAL_SENT_KEY = "total_sent_count";
+    private static final String CURRENT_SENT_KEY = "_sent_count";
+    private static final String EMAIL_MATCHER = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
 
     public static List<EmailSender> senderList = Arrays.asList(
             new EmailSender("7a3b60c5-f3e7-4a76-8e28-e447c3417963", "Jason Xue", "jason@youland.com", "10-439-2415"),
@@ -45,57 +49,74 @@ public class MarketingEmailService implements IMarketingEmailService {
 
     @Override
     public boolean sendEmail() {
-        if (!StringUtils.hasText(redisTemplate.opsForValue().get(SERIAL_KEY))) {
+        if (!StringUtils.hasText(redisTemplate.opsForValue().get(TO_ID_KEY))) {
             // 初始化
-            redisTemplate.opsForValue().set(SERIAL_KEY, "0", Duration.ofDays(30));
-            redisTemplate.opsForValue().set(EFFECTIVE_KEY, "0", Duration.ofDays(30));
+            redisTemplate.opsForValue().set(TO_ID_KEY, "0", Duration.ofDays(30));
+            redisTemplate.opsForValue().set(TOTAL_SENT_KEY, "0", Duration.ofDays(30));
         }
-        if (!StringUtils.hasText(redisTemplate.opsForValue().get(LIMIT_KEY))) {
-            redisTemplate.opsForValue().set(LIMIT_KEY, "0", Duration.ofHours(6));
+        String dateLimitKey = LocalDate.now() + CURRENT_SENT_KEY;
+        if (!StringUtils.hasText(redisTemplate.opsForValue().get(dateLimitKey))) {
+            redisTemplate.opsForValue().set(dateLimitKey, "0", Duration.ofHours(24));
         }
 
         final long limitNum = 3000;
         //当天发送邮件数量超过限制值 当天不再发送
-        Long todaySendNum = redisTemplate.opsForValue().increment(LIMIT_KEY);
-        if(todaySendNum !=null && todaySendNum > limitNum) {
+        Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey);
+        if (todaySendNum != null && todaySendNum > limitNum) {
             return false;
         }
 
-        Long serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
-        Optional<EmailUser> emailUserOptional = emailUserRepository.findById(serialNumber);
+        List<EmailUser> emailUsers = getEightEmailUsers();
+        int j = emailUsers.size();
+        if (j > 0) {
+            for (int i = 0; i < j; i++) {
+                EmailUser user = emailUsers.get(i);
+                EmailSender sender = senderList.get((i));
+                log.info("当前发送邮箱，发送者: {}, 接收者: {}", sender.email(), JsonUtil.stringify(user));
 
-        //如果 数据库查到了 但是邮箱为空或者不合法 或者取消订阅 则继续查询下一个
-        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-        while (emailUserOptional.isPresent() && (
-                !StringUtils.hasText(emailUserOptional.get().getEmail())
-                || !Pattern.matches(emailMatcher, emailUserOptional.get().getEmail().trim())
-                || Boolean.TRUE.equals(emailUserOptional.get().getUnsubscribe())
-        )) {
+                boolean isZh = StringUtils.hasText(user.getTemplate()) && user.getTemplate().contains("中文");
+                String templateName = isZh ? "index_cn.html" : "index.html";
+                String subject = isZh ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
+                Dict context = Dict.create()
+                        .set("name", user.getName())
+                        .set("phone", sender.tel())
+                        .set("email", sender.email());
 
-            serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
-            emailUserOptional = emailUserRepository.findById(serialNumber);
-        }
-
-        if (emailUserOptional.isPresent()) {
-            EmailUser emailUser = emailUserOptional.get();
-            log.info("当前有效邮箱用户信息：{}", emailUser);
-
-            Long effectiveNumber = redisTemplate.opsForValue().increment(EFFECTIVE_KEY);
-            boolean isCN = "中文".equals(emailUser.getTemplate());
-            String templateName = isCN ? "index_cn.html" : "index.html";
-            String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
-            EmailSender sender = senderList.get((effectiveNumber.intValue() - 1) % 8);
-            Dict context = Dict.create()
-                    .set("name", emailUser.getName())
-                    .set("phone", sender.tel())
-                    .set("email", sender.email());
-
-            EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
-            log.info("当前有效发送成功数：{}", redisTemplate.opsForValue().increment(EFFECTIVE_KEY));
+                try {
+//                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
+                    log.info("当前有效发送成功数：{}", redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
+                } catch (Exception e) {
+                    log.error("当前邮箱发送失败: ", e);
+                }
+            }
             return true;
         } else {
             return false;
         }
+    }
+
+    private List<EmailUser> getEightEmailUsers() {
+        List<EmailUser> list = new ArrayList<>();
+        boolean hasData = true;
+        do {
+            Long serialNumber = redisTemplate.opsForValue().increment(TO_ID_KEY);
+            Optional<EmailUser> optional = emailUserRepository.findById(serialNumber);
+            if (optional.isPresent()) {
+                EmailUser emailUser = optional.get();
+                if (!Boolean.TRUE.equals(emailUser.getUnsubscribe())
+                        && StringUtils.hasText(emailUser.getEmail())
+                        && Pattern.matches(EMAIL_MATCHER, emailUser.getEmail().trim())) {
+                    list.add(emailUser);
+                    log.info("当前用户邮箱合法:{}，加入到待发列表", JsonUtil.stringify(emailUser));
+                }else {
+                    log.info("当前用户邮箱不合法:{}, 已被过滤", JsonUtil.stringify(emailUser));
+                }
+            } else {
+                hasData = false;
+            }
+        } while (hasData && list.size() < 8);
+
+        return list;
     }
 
     @Override
