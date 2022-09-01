@@ -12,6 +12,7 @@ import com.microsoft.graph.authentication.TokenCredentialAuthProvider;
 import com.microsoft.graph.models.*;
 import com.microsoft.graph.requests.GraphServiceClient;
 import com.youland.marketing.model.EmailSender;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 /**
  * @author chenning
  */
+@Slf4j
 public final class EmailUtil {
     private EmailUtil(){}
     private final static GraphServiceClient graphClient;
@@ -46,7 +48,7 @@ public final class EmailUtil {
         );
         Template template = engine.getTemplate(templateName);
         String content = template.render(context);
-        System.out.println(content);
+        log.info("发送者:{}, 主题:{}, 模板名:{}, 接收者:{}. 正在发送...", sender.email(), subject, templateName, to);
         sendOutlookEmail(sender.email(), to, null, subject, content);
     }
 
