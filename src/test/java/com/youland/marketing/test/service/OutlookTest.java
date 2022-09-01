@@ -99,8 +99,8 @@ public class OutlookTest {
         EmailSender sender = new EmailSender("9de72f85-d7f7-478f-b88d-0f423d4b248a", "Ning Chen",
                 "ning@youland.com", "1-833-968-5263");
         EmailUser emailUser = new EmailUser();
-        emailUser.setName("Rico");
-        emailUser.setEmail("rico@youland.com");
+        emailUser.setName("cly");
+        emailUser.setEmail("ningcly00@gmail.com");
         emailUser.setTemplate("英文");
 
         boolean isCN = "中文".equals(emailUser.getTemplate());
@@ -113,4 +113,5 @@ public class OutlookTest {
 
         EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
     }
+
 }

@@ -8,12 +8,14 @@ import com.youland.marketing.service.IMarketingEmailService;
 import com.youland.marketing.util.EmailUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 /**
@@ -24,8 +26,10 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class MarketingEmailService implements IMarketingEmailService {
     private final EmailUserRepository emailUserRepository;
-    private final AtomicLong serialNumber = new AtomicLong();
-    private final AtomicLong effectiveNumber = new AtomicLong();
+    private final StringRedisTemplate redisTemplate;
+
+    private static final String SERIAL_KEY = "serialNumber";
+    private static final String EFFECTIVE_KEY = "effectiveNumber";
 
     public static List<EmailSender> senderList = Arrays.asList(
             new EmailSender("7a3b60c5-f3e7-4a76-8e28-e447c3417963", "Jason Xue", "jason@youland.com", "10-439-2415"),
@@ -38,24 +42,47 @@ public class MarketingEmailService implements IMarketingEmailService {
             new EmailSender("08f870fe-c45b-42cf-81a2-9afbd46f047c", "Dorothy Feng", "dorothy@Youland.com", "1-833-968-5263")
     );
 
-    public void sendEmail() {
-        EmailUser emailUser = emailUserRepository.getReferenceById(serialNumber.get());
-        while (!StringUtils.hasText(emailUser.getEmail()) && Boolean.TRUE.equals(emailUser.getUnsubscribe())) {
-            emailUser = emailUserRepository.getReferenceById(serialNumber.incrementAndGet());
+    @Override
+    public boolean sendEmail() {
+        if (!StringUtils.hasText(redisTemplate.opsForValue().get(SERIAL_KEY))) {
+            // 初始化
+            redisTemplate.opsForValue().set(SERIAL_KEY, "0", Duration.ofDays(30));
+            redisTemplate.opsForValue().set(EFFECTIVE_KEY, "0", Duration.ofDays(30));
         }
-        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-        boolean isMatch = Pattern.matches(emailMatcher, emailUser.getEmail());
 
-        boolean isCN = "中文".equals(emailUser.getTemplate());
-        String templateName = isCN ? "index_cn.html" : "index.html";
-        String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
-        EmailSender sender = senderList.get(effectiveNumber.intValue() % 8);
-        Dict context = Dict.create()
-                .set("name", emailUser.getName())
-                .set("phone", sender.tel())
-                .set("email", sender.email());
+        Long serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
+        Optional<EmailUser> emailUserOptional = emailUserRepository.findById(serialNumber);
 
-        EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
-        effectiveNumber.incrementAndGet();
+        while (emailUserOptional.isPresent()
+                && !StringUtils.hasText(emailUserOptional.get().getEmail())
+                && Boolean.TRUE.equals(emailUserOptional.get().getUnsubscribe())) {
+
+            serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
+            emailUserOptional = emailUserRepository.findById(serialNumber);
+        }
+
+        if (emailUserOptional.isPresent()) {
+            EmailUser emailUser = emailUserOptional.get();
+            log.info("当前有效邮箱用户信息：{}", emailUser);
+            //TODO 判断 EmailUser 中的email是否合法 若不合法则过滤掉
+//        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+//        boolean isMatch = Pattern.matches(emailMatcher, emailUser.getEmail());
+
+            Long effectiveNumber = redisTemplate.opsForValue().increment(EFFECTIVE_KEY);
+            boolean isCN = "中文".equals(emailUser.getTemplate());
+            String templateName = isCN ? "index_cn.html" : "index.html";
+            String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
+            EmailSender sender = senderList.get((effectiveNumber.intValue() - 1) % 8);
+            Dict context = Dict.create()
+                    .set("name", emailUser.getName())
+                    .set("phone", sender.tel())
+                    .set("email", sender.email());
+
+            EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
+            log.info("当前有效发送成功数：{}", redisTemplate.opsForValue().increment(EFFECTIVE_KEY));
+            return true;
+        } else {
+            return false;
+        }
     }
 }

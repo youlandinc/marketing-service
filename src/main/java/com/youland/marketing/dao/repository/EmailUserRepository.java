@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface EmailUserRepository extends JpaRepository<EmailUser, Long> {
+    EmailUser findFirstByEmail(String email);
 }
