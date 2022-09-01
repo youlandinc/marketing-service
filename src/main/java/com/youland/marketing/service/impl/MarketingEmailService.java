@@ -123,8 +123,8 @@ public class MarketingEmailService implements IMarketingEmailService {
     @Override
     public boolean unSubscribe(String email) {
         EmailUser emailUser = emailUserRepository.findFirstByEmail(email);
-        emailUser.setUnsubscribe(true);
         if (emailUser != null) {
+            emailUser.setUnsubscribe(true);
             emailUserRepository.save(emailUser);
         }
         return true;
