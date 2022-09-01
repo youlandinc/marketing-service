@@ -34,7 +34,7 @@ public class MarketingEmailService implements IMarketingEmailService {
     private static final String TO_ID_KEY = "email_user_id";
     private static final String TOTAL_SENT_KEY = "total_sent_count";
     private static final String CURRENT_SENT_KEY = "_sent_count";
-    private static final String EMAIL_MATCHER = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+    private static final String EMAIL_MATCHER = "^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
 
     public static List<EmailSender> senderList = Arrays.asList(
             new EmailSender("7a3b60c5-f3e7-4a76-8e28-e447c3417963", "Jason Xue", "jason@youland.com", "10-439-2415"),

@@ -117,8 +117,8 @@ public class OutlookTest {
 
     @Test
     void verify_email_test() {
-        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-        String email = "ivy94501@gmail.com; drewoicom@gmail.com; Shermand.ct2@gmail.com ";
+        String emailMatcher="^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
+        String email = "realtor.david.wang@gmail.com";
         boolean isMatches = Pattern.matches(emailMatcher, email.trim());
         System.out.println(isMatches);
     }
