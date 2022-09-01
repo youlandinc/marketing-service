@@ -1,0 +1,802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HTML Email</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-size: 24px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      *,
+      ::before,
+      ::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      style="width: 100%; border-collapse: collapse"
+    >
+      <tbody>
+        <tr>
+          <td align="center">
+            <table
+              align="center"
+              border="0"
+              cellspacing="0"
+              cellpadding="0"
+              style="
+                width: 800px;
+                border-collapse: collapse;
+                margin: 0;
+                padding: 0;
+                border-width: 0;
+              "
+            >
+              <tbody>
+                <tr>
+                  <td style="height: 80px">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td style="text-align: center; padding-bottom: 20px">
+                    <a href="https://www.youland.com" target="_blank">
+                      <img
+                        src="https://d286fx9lm3ae7t.cloudfront.net/images/logo.png"
+                        width="210px"
+                        alt="logo"
+                        title="logo"
+                      />
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      text-align: center;
+                      color: #156efa;
+                      font-family: Roboto, Helvetica, Arial, sans-serif;
+                      padding-bottom: 10px;
+                    "
+                  >
+                    Making mortgages accessible to all.
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: center">
+                    <a
+                      href="https://www.youland.com"
+                      target="_blank"
+                      style="
+                        color: #156efa;
+                        font-family: Roboto, Helvetica, Arial, sans-serif;
+                        text-decoration: underline;
+                      "
+                      >www.youland.com</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table
+                      align="center"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        border-collapse: collapse;
+                        border: 0px !important;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                      "
+                    >
+                      <tbody class="">
+                        <tr class="">
+                          <td
+                            height="40"
+                            class=""
+                            style="
+                              border-collapse: collapse;
+                              color: rgb(41, 43, 41);
+                              font-size: 1px;
+                              line-height: 1px;
+                            "
+                          >
+                            &nbsp;
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    style="
+                      height: 154px;
+                      text-align: center;
+                      background-color: #0b255b;
+                      font-size: 50px;
+                      color: #ffffff;
+                      font-family: Roboto, Helvetica, Arial, sans-serif;
+                    "
+                  >
+                    <b th:text="'Hello '+${name}+','"></b>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table
+                      align="center"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        border-collapse: collapse;
+                        border: 0px !important;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                      "
+                    >
+                      <tbody class="">
+                        <tr class="">
+                          <td
+                            height="20"
+                            class=""
+                            style="
+                              border-collapse: collapse;
+                              color: rgb(41, 43, 41);
+                              font-size: 1px;
+                              line-height: 1px;
+                            "
+                          >
+                            &nbsp;
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table style="background: #e5f1fd; color: #0b255b">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img
+                              src="https://d286fx9lm3ae7t.cloudfront.net/images/logo_black.png"
+                              width="211px"
+                              style="margin: 67px 0 0 63px"
+                              alt="logo"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              vertical-align: bottom;
+                              color: #0b255b;
+                              background: url('https://d286fx9lm3ae7t.cloudfront.net/images/pic01.png');
+                              background-repeat: no-repeat;
+                              background-position: center right;
+                              background-size: contain;
+                              height: 365px;
+                              padding-left: 60px;
+                            "
+                          >
+                            <p
+                              style="
+                                font-size: 64px;
+                                line-height: 1.2;
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                margin-bottom: 24px;
+                              "
+                            >
+                              <b>Bridge Loan</b>
+                            </p>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 24px;
+                                margin-bottom: 18px;
+                                line-height: 1.5;
+                              "
+                            >
+                              <b>Don't let time or money slow you down.</b>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">git图</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 32px;
+                                font-weight: 100;
+                                line-height: 1.5;
+                                margin-bottom: 10px;
+                              "
+                            >
+                              - Broker special -
+                            </p>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 32px;
+                                font-weight: 400;
+                                line-height: 1.5;
+                                margin-bottom: 10px;
+                              "
+                            >
+                              Minimum lender point 1%！
+                            </p>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 32px;
+                                font-weight: 100;
+                                line-height: 1.5;
+                                margin-bottom: 10px;
+                              "
+                            >
+                              - No Rate Adjustments -
+                            </p>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 32px;
+                                font-weight: 400;
+                                line-height: 1.5;
+                                margin-bottom: 10px;
+                              "
+                            >
+                              Waived for Fall Promotion Period
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 40px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center; height: 69px">
+                            <a
+                              class="h5-normal"
+                              href="https://www.youland.com/bridge/"
+                              target="_blank"
+                              style="
+                                padding: 20px 60px;
+                                color: #ffffff;
+                                background-color: #f0a533;
+                              "
+                            >
+                              Learn More
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img
+                              src="https://d286fx9lm3ae7t.cloudfront.net/images/pic03.png"
+                              alt="Quick closing,No docs,No PPP,What are you waiting for?"
+                              title="Quick closing,No docs,No PPP,What are you waiting for?"
+                              width="100%"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">
+                            <b
+                              style="
+                                font-size: 48px;
+                                line-height: 1.2;
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                              "
+                              >Allowed</b
+                            >
+                            <img
+                              src="https://d286fx9lm3ae7t.cloudfront.net/images/message_check.png"
+                              alt=""
+                              width="48px"
+                              height="48px"
+                              style="vertical-align: text-bottom"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 20px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <ul style="list-style: inside; padding-left: 100px">
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                Close in 7 business days or faster
+                              </li>
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                Up to 75% LTV
+                              </li>
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                Minimum FICO : 640
+                              </li>
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                Minimum loan amount $150,000
+                              </li>
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                Maximum loan amount $3,000,000
+                              </li>
+                              <li
+                                style="
+                                  font-family: Roboto, Helvetica, Arial,
+                                    sans-serif;
+                                  font-size: 32px;
+                                  line-height: 1.8;
+                                "
+                              >
+                                3-24 Months (No Prepayment Penalty)
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 40px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center">
+                            <b
+                              style="
+                                font-size: 48px;
+                                line-height: 1.2;
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                              "
+                              >Not needed</b
+                            >
+                            <img
+                              src="https://d286fx9lm3ae7t.cloudfront.net/images/message_close.png"
+                              alt=""
+                              width="48px"
+                              height="48px"
+                              style="vertical-align: text-bottom"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 20px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table style="width: 100%">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <ul
+                                      style="
+                                        list-style: inside;
+                                        padding-left: 100px;
+                                      "
+                                    >
+                                      <li
+                                        style="
+                                          font-family: Roboto, Helvetica, Arial,
+                                            sans-serif;
+                                          font-size: 32px;
+                                          line-height: 1.8;
+                                        "
+                                      >
+                                        Income
+                                      </li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <ul
+                                      style="
+                                        list-style: inside;
+                                        padding-left: 100px;
+                                      "
+                                    >
+                                      <li
+                                        style="
+                                          font-family: Roboto, Helvetica, Arial,
+                                            sans-serif;
+                                          font-size: 32px;
+                                          line-height: 1.8;
+                                        "
+                                      >
+                                        Employment
+                                      </li>
+                                    </ul>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <ul
+                                      style="
+                                        list-style: inside;
+                                        padding-left: 100px;
+                                      "
+                                    >
+                                      <li
+                                        style="
+                                          font-family: Roboto, Helvetica, Arial,
+                                            sans-serif;
+                                          font-size: 32px;
+                                          line-height: 1.8;
+                                        "
+                                      >
+                                        DTI
+                                      </li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <ul
+                                      style="
+                                        list-style: inside;
+                                        padding-left: 100px;
+                                      "
+                                    >
+                                      <li
+                                        style="
+                                          font-family: Roboto, Helvetica, Arial,
+                                            sans-serif;
+                                          font-size: 32px;
+                                          line-height: 1.8;
+                                        "
+                                      >
+                                        DSCR
+                                      </li>
+                                    </ul>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 40px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align: center; height: 69px">
+                            <a
+                              href="https://www.youland.com/bridge/rate/"
+                              target="_blank"
+                              style="
+                                padding: 20px 60px;
+                                background-color: #f0a533;
+                                color: #ffffff;
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                              "
+                              >Check Your Rate Now</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <table
+                              align="center"
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              style="
+                                border-collapse: collapse;
+                                border: 0px !important;
+                                margin: 0px !important;
+                                padding: 0px !important;
+                                background-color: #e5f1fd;
+                              "
+                            >
+                              <tbody class="">
+                                <tr class="">
+                                  <td
+                                    height="0"
+                                    class=""
+                                    style="
+                                      border-collapse: collapse;
+                                      color: rgb(41, 43, 41);
+                                      font-size: 1px;
+                                      line-height: 1px;
+                                      height: 80px;
+                                    "
+                                  >
+                                    &nbsp;
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table
+                      align="center"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      style="
+                        border-collapse: collapse;
+                        border: 0px !important;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                      "
+                    >
+                      <tbody class="">
+                        <tr class="">
+                          <td
+                            height="20"
+                            class=""
+                            style="
+                              border-collapse: collapse;
+                              color: rgb(41, 43, 41);
+                              font-size: 1px;
+                              line-height: 1px;
+                            "
+                          >
+                            &nbsp;
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <table
+                      style="background-color: #0b255b; width: 100%"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                    >
+                      <tbody>
+                        <tr>
+                          <td style="height: 80px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="center">
+                            <table>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <a
+                                      href=" https://twitter.com/YouLand_Inc"
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src="https://d286fx9lm3ae7t.cloudfront.net/images/twitter.png"
+                                        width="32px"
+                                        height="32px"
+                                        title="twitter"
+                                        alt="twitter"
+                                      />
+                                    </a>
+                                  </td>
+                                  <td
+                                    style="
+                                      width: 20px;
+                                      line-height: 0px;
+                                      font-size: 0px;
+                                    "
+                                  >
+                                    &nbsp;
+                                  </td>
+                                  <td>
+                                    <a
+                                      href="https://www.youtube.com/channel/UCUWshfzmbqWktFMaHwyw5Uw"
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src="https://d286fx9lm3ae7t.cloudfront.net/images/youtube.png"
+                                        alt="youtube"
+                                        width="32px"
+                                        height="32px"
+                                        title="youtube"
+                                      />
+                                    </a>
+                                  </td>
+                                  <td
+                                    style="
+                                      width: 20px;
+                                      line-height: 0px;
+                                      font-size: 0px;
+                                    "
+                                  >
+                                    &nbsp;
+                                  </td>
+                                  <td>
+                                    <a
+                                      href="https://www.facebook.com/YouLand-984516721727740"
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src="https://d286fx9lm3ae7t.cloudfront.net/images/facebook.png"
+                                        alt="facebook"
+                                        width="32px"
+                                        height="32px"
+                                        title="facebook"
+                                      />
+                                    </a>
+                                  </td>
+                                  <td
+                                    style="
+                                      width: 20px;
+                                      line-height: 0px;
+                                      font-size: 0px;
+                                    "
+                                  >
+                                    &nbsp;
+                                  </td>
+                                  <td>
+                                    <a
+                                      href="https://www.linkedin.com/company/youland"
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src="https://d286fx9lm3ae7t.cloudfront.net/images/LinkedIn.png"
+                                        alt="linkedin"
+                                        width="32px"
+                                        height="32px"
+                                        title="linkedin"
+                                      />
+                                    </a>
+                                  </td>
+                                  <td
+                                    style="
+                                      width: 20px;
+                                      line-height: 0px;
+                                      font-size: 0px;
+                                    "
+                                  >
+                                    &nbsp;
+                                  </td>
+                                  <td>
+                                    <a
+                                      href="https://www.zillow.com/lender-profile/youlandinc/"
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src="https://d286fx9lm3ae7t.cloudfront.net/images/zillow.png"
+                                        alt="zillow"
+                                        width="32px"
+                                        height="32px"
+                                        title="zillow"
+                                      />
+                                    </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 40px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                text-align: center;
+                                color: #e0e4e8;
+                                font-size: 18px;
+                              "
+                              th:text="'Call : '+${phone}+' | '+${email}">
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 10px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <p
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 14px;
+                                text-align: center;
+                                color: #e0e4e8;
+                                font-weight: 100;
+                              "
+                            >
+                              NMLS ID 2090196
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 40px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td align="center">
+                            <a
+                              style="
+                                font-family: Roboto, Helvetica, Arial,
+                                  sans-serif;
+                                font-size: 14px;
+                                text-align: center;
+                                color: #e0e4e8;
+                                font-weight: 100;
+                                text-decoration: underline;
+                              "
+                              href=""
+                              >Unsubscribe</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="height: 80px">&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
