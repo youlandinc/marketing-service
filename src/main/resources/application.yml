@@ -8,7 +8,7 @@ server:
 
 spring:
   profiles:
-    active: local-h2
+    active: dev
   main:
     allow-bean-definition-overriding: true
 

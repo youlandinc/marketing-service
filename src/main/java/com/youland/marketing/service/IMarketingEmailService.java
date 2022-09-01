@@ -5,4 +5,6 @@ package com.youland.marketing.service;
  */
 public interface IMarketingEmailService {
     boolean sendEmail();
+
+    boolean unSubscribe(String email);
 }
