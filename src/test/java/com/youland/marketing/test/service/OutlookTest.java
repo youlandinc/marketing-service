@@ -17,6 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Pattern;
 
 public class OutlookTest {
 
@@ -114,4 +115,11 @@ public class OutlookTest {
         EmailUtil.sendOutlookEmail(sender, subject, templateName, context, emailUser.getEmail());
     }
 
+    @Test
+    void verify_email_test() {
+        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+        String email = "ivy94501@gmail.com; drewoicom@gmail.com; Shermand.ct2@gmail.com ";
+        boolean isMatches = Pattern.matches(emailMatcher, email.trim());
+        System.out.println(isMatches);
+    }
 }

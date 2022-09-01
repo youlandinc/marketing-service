@@ -36,6 +36,8 @@ ext {
     microsoftGraphVersion = '5.33.0'
     azureVersion = '1.2.5'
     hutoolVersion = '5.8.5'
+    //ognl新版有莫名其妙的bug 勿升级
+    ognlVersion = '3.1.15'
 }
 
 dependencies {
@@ -46,7 +48,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'ognl:ognl:3.1.15'
+    implementation "ognl:ognl:${ognlVersion}"
     // AWS SecretsManger
     implementation "com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:${secretsmanagerVersion}"
     // AWS Simple Email Service

@@ -30,6 +30,7 @@ public class MarketingEmailService implements IMarketingEmailService {
 
     private static final String SERIAL_KEY = "serialNumber";
     private static final String EFFECTIVE_KEY = "effectiveNumber";
+    private static final String LIMIT_KEY = "limitNumber";
 
     public static List<EmailSender> senderList = Arrays.asList(
             new EmailSender("7a3b60c5-f3e7-4a76-8e28-e447c3417963", "Jason Xue", "jason@youland.com", "10-439-2415"),
@@ -49,13 +50,27 @@ public class MarketingEmailService implements IMarketingEmailService {
             redisTemplate.opsForValue().set(SERIAL_KEY, "0", Duration.ofDays(30));
             redisTemplate.opsForValue().set(EFFECTIVE_KEY, "0", Duration.ofDays(30));
         }
+        if (!StringUtils.hasText(redisTemplate.opsForValue().get(LIMIT_KEY))) {
+            redisTemplate.opsForValue().set(LIMIT_KEY, "0", Duration.ofHours(6));
+        }
+
+        final long limitNum = 3000;
+        //当天发送邮件数量超过限制值 当天不再发送
+        Long todaySendNum = redisTemplate.opsForValue().increment(LIMIT_KEY);
+        if(todaySendNum !=null && todaySendNum > limitNum) {
+            return false;
+        }
 
         Long serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
         Optional<EmailUser> emailUserOptional = emailUserRepository.findById(serialNumber);
 
-        while (emailUserOptional.isPresent()
-                && !StringUtils.hasText(emailUserOptional.get().getEmail())
-                && Boolean.TRUE.equals(emailUserOptional.get().getUnsubscribe())) {
+        //如果 数据库查到了 但是邮箱为空或者不合法 或者取消订阅 则继续查询下一个
+        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+        while (emailUserOptional.isPresent() && (
+                !StringUtils.hasText(emailUserOptional.get().getEmail())
+                || !Pattern.matches(emailMatcher, emailUserOptional.get().getEmail().trim())
+                || Boolean.TRUE.equals(emailUserOptional.get().getUnsubscribe())
+        )) {
 
             serialNumber = redisTemplate.opsForValue().increment(SERIAL_KEY);
             emailUserOptional = emailUserRepository.findById(serialNumber);
@@ -64,9 +79,6 @@ public class MarketingEmailService implements IMarketingEmailService {
         if (emailUserOptional.isPresent()) {
             EmailUser emailUser = emailUserOptional.get();
             log.info("当前有效邮箱用户信息：{}", emailUser);
-            //TODO 判断 EmailUser 中的email是否合法 若不合法则过滤掉
-//        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-//        boolean isMatch = Pattern.matches(emailMatcher, emailUser.getEmail());
 
             Long effectiveNumber = redisTemplate.opsForValue().increment(EFFECTIVE_KEY);
             boolean isCN = "中文".equals(emailUser.getTemplate());

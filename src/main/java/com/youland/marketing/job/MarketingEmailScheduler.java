@@ -1,4 +1,5 @@
 package com.youland.marketing.job;
+import com.youland.marketing.service.IMarketingEmailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -15,9 +16,8 @@ import java.util.concurrent.ScheduledFuture;
 @Component
 @RequiredArgsConstructor
 public class MarketingEmailScheduler {
-
     private final ThreadPoolTaskScheduler threadPoolTaskScheduler;
-
+    private final IMarketingEmailService marketingEmailService;
     private ScheduledFuture<?> future;
 
     private DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
@@ -27,16 +27,15 @@ public class MarketingEmailScheduler {
      */
     @PostConstruct
     public boolean startCorn() {
-
         if (Objects.nonNull(future)) {
             future.cancel(true);
             log.info("task has been closed. ");
         }
-        String cornConfig = "0 0/60 1-3 * * ? ";
+        String cornConfig = "0/30 * 7,8,9,10 * 1,9 ? *";
         future = threadPoolTaskScheduler.schedule(() -> {
-            log.info("Start encompass system job expression:: " + df.format(LocalDateTime.now()));
-
-            log.info("End encompass system job expression:: " + df.format(LocalDateTime.now()));
+            log.info("Start send marketing email system job expression:: " + df.format(LocalDateTime.now()));
+            marketingEmailService.sendEmail();
+            log.info("End send marketing email system job expression:: " + df.format(LocalDateTime.now()));
         }, new CronTrigger(cornConfig));
 
         log.info("task has started.");
@@ -58,8 +57,7 @@ public class MarketingEmailScheduler {
     public boolean manualTask(final Date startDate, final Date endDate){
         threadPoolTaskScheduler.execute(() -> {
             log.info("Start encompass manual job expression:: " + df.format(LocalDateTime.now()));
-
-
+            marketingEmailService.sendEmail();
             log.info("End encompass manual job expression:: " + df.format(LocalDateTime.now()));
         });
         return true;
