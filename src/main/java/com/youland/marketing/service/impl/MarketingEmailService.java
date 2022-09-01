@@ -61,7 +61,7 @@ public class MarketingEmailService implements IMarketingEmailService {
 
         final long limitNum = 3000;
         //当天发送邮件数量超过限制值 当天不再发送
-        Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey);
+        Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey,0);
         if (todaySendNum != null && todaySendNum > limitNum) {
             return false;
         }
@@ -84,7 +84,8 @@ public class MarketingEmailService implements IMarketingEmailService {
 
                 try {
 //                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
-                    log.info("当前有效发送成功数：{}", redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
+                    log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
+                            redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
                 } catch (Exception e) {
                     log.error("当前邮箱发送失败: ", e);
                 }
@@ -99,8 +100,8 @@ public class MarketingEmailService implements IMarketingEmailService {
         List<EmailUser> list = new ArrayList<>();
         boolean hasData = true;
         do {
-            Long serialNumber = redisTemplate.opsForValue().increment(TO_ID_KEY);
-            Optional<EmailUser> optional = emailUserRepository.findById(serialNumber);
+            Long idNum = redisTemplate.opsForValue().increment(TO_ID_KEY);
+            Optional<EmailUser> optional = emailUserRepository.findById(idNum);
             if (optional.isPresent()) {
                 EmailUser emailUser = optional.get();
                 if (!Boolean.TRUE.equals(emailUser.getUnsubscribe())
