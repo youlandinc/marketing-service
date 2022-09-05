@@ -97,15 +97,15 @@ public class OutlookTest {
 
     @Test
     void send_template_email() {
-        EmailSender sender = new EmailSender("9de72f85-d7f7-478f-b88d-0f423d4b248a", "Ning Chen",
-                "ning@youland.com", "1-833-968-5263");
+        EmailSender sender = new EmailSender("0553cb68-e618-453c-b572-c77d7cc7c762", "Rico Shen",
+                "rico@youland.com", "1-833-968-5263");
         EmailUser emailUser = new EmailUser();
-        emailUser.setName("cly");
-        emailUser.setEmail("ningcly00@gmail.com");
+        emailUser.setName("Mace Guo");
+        emailUser.setEmail("mace@youland.com");
         emailUser.setTemplate("英文");
 
         boolean isCN = "中文".equals(emailUser.getTemplate());
-        String templateName = isCN ? "index_cn.html" : "index.html";
+        String templateName = isCN ? "index_table_cn.html" : "index_table.html";
         String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
         Dict context = Dict.create()
                 .set("name", emailUser.getName())
@@ -117,8 +117,8 @@ public class OutlookTest {
 
     @Test
     void verify_email_test() {
-        String emailMatcher="^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
-        String email = "realtor.david.wang@gmail.com";
+        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+        String email = "ivy94501@gmail.com; drewoicom@gmail.com; Shermand.ct2@gmail.com ";
         boolean isMatches = Pattern.matches(emailMatcher, email.trim());
         System.out.println(isMatches);
     }
