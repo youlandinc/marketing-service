@@ -62,6 +62,7 @@ public class MarketingEmailService implements IMarketingEmailService {
         final long limitNum = 3000;
         //当天发送邮件数量超过限制值 当天不再发送
         Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey,0);
+        log.info("dateLimitKey:{}.", todaySendNum);
         if (todaySendNum != null && todaySendNum > limitNum) {
             return false;
         }
@@ -75,7 +76,7 @@ public class MarketingEmailService implements IMarketingEmailService {
                 log.info("当前发送邮箱，发送者: {}, 接收者: {}", sender.email(), JsonUtil.stringify(user));
 
                 boolean isZh = StringUtils.hasText(user.getTemplate()) && user.getTemplate().contains("中文");
-                String templateName = isZh ? "index_cn.html" : "index.html";
+                String templateName = isZh ? "index_table_cn.html" : "index_table.html";
                 String subject = isZh ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
                 Dict context = Dict.create()
                         .set("name", user.getName())
@@ -83,7 +84,7 @@ public class MarketingEmailService implements IMarketingEmailService {
                         .set("email", sender.email());
 
                 try {
-//                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
+                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
                     log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
                             redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
                 } catch (Exception e) {
@@ -99,9 +100,11 @@ public class MarketingEmailService implements IMarketingEmailService {
     private List<EmailUser> getEightEmailUsers() {
         List<EmailUser> list = new ArrayList<>();
         boolean hasData = true;
+
         do {
-            Long idNum = redisTemplate.opsForValue().increment(TO_ID_KEY);
-            Optional<EmailUser> optional = emailUserRepository.findById(idNum);
+            Long idNum = redisTemplate.opsForValue().increment(TO_ID_KEY, 0);
+            Optional<EmailUser> optional = emailUserRepository.findById(idNum+1);
+            log.info("idNum :{}.", idNum);
             if (optional.isPresent()) {
                 EmailUser emailUser = optional.get();
                 if (!Boolean.TRUE.equals(emailUser.getUnsubscribe())
@@ -112,6 +115,8 @@ public class MarketingEmailService implements IMarketingEmailService {
                 }else {
                     log.info("当前用户邮箱不合法:{}, 已被过滤", JsonUtil.stringify(emailUser));
                 }
+                Long newIdNum = redisTemplate.opsForValue().increment(TO_ID_KEY);
+                log.info("newIdNum:{}.",newIdNum);
             } else {
                 hasData = false;
             }

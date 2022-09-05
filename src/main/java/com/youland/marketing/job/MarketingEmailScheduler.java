@@ -31,7 +31,7 @@ public class MarketingEmailScheduler {
             future.cancel(true);
             log.info("task has been closed. ");
         }
-        String cornConfig = "0/30 * 7,8,9,10 * 1,9 ?";
+        String cornConfig = "0/30 * 15,16,17,18 * 1,9 ?";
         future = threadPoolTaskScheduler.schedule(() -> {
             log.info("Start send marketing email system job expression:: " + df.format(LocalDateTime.now()));
             marketingEmailService.sendEmail();
