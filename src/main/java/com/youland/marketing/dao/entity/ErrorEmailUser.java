@@ -9,8 +9,8 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "email_user")
-public class EmailUser {
+@Table(name = "error_email_user")
+public class ErrorEmailUser {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;

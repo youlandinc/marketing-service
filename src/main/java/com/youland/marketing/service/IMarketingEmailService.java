@@ -7,4 +7,7 @@ public interface IMarketingEmailService {
     boolean sendEmail();
 
     boolean unSubscribe(String email);
+
+    boolean findErrorEmail();
+
 }

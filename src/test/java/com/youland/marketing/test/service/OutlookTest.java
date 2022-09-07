@@ -100,9 +100,9 @@ public class OutlookTest {
         EmailSender sender = new EmailSender("0553cb68-e618-453c-b572-c77d7cc7c762", "Rico Shen",
                 "rico@youland.com", "1-833-968-5263");
         EmailUser emailUser = new EmailUser();
-        emailUser.setName("Mace Guo");
-        emailUser.setEmail("mace@youland.com");
-        emailUser.setTemplate("英文");
+        emailUser.setName("郭远宽");
+        emailUser.setEmail("guoyuankuan@126.com");
+        emailUser.setTemplate("中文");
 
         boolean isCN = "中文".equals(emailUser.getTemplate());
         String templateName = isCN ? "index_table_cn.html" : "index_table.html";
@@ -117,9 +117,10 @@ public class OutlookTest {
 
     @Test
     void verify_email_test() {
-        String emailMatcher="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
-        String email = "ivy94501@gmail.com; drewoicom@gmail.com; Shermand.ct2@gmail.com ";
-        boolean isMatches = Pattern.matches(emailMatcher, email.trim());
+        String emailMatcher="^[a-z0-9]+([._\\\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$";
+        String email = " Xi.lu@kw.com ";
+        boolean isMatches = Pattern.matches(emailMatcher, email.trim().toLowerCase());
         System.out.println(isMatches);
     }
+
 }

@@ -1,14 +1,18 @@
 package com.youland.marketing.service.impl;
 
 import cn.hutool.core.lang.Dict;
+import com.microsoft.graph.http.GraphServiceException;
 import com.youland.marketing.dao.entity.EmailUser;
+import com.youland.marketing.dao.entity.ErrorEmailUser;
 import com.youland.marketing.dao.repository.EmailUserRepository;
+import com.youland.marketing.dao.repository.ErrorEmailUserRepository;
 import com.youland.marketing.model.EmailSender;
 import com.youland.marketing.service.IMarketingEmailService;
 import com.youland.marketing.util.EmailUtil;
 import com.youland.marketing.util.JsonUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -30,6 +34,7 @@ import java.util.regex.Pattern;
 public class MarketingEmailService implements IMarketingEmailService {
     private final EmailUserRepository emailUserRepository;
     private final StringRedisTemplate redisTemplate;
+    private final ErrorEmailUserRepository errorEmailUserRepository;
 
     private static final String TO_ID_KEY = "email_user_id";
     private static final String TOTAL_SENT_KEY = "total_sent_count";
@@ -87,7 +92,9 @@ public class MarketingEmailService implements IMarketingEmailService {
                     EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
                     log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
                             redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
-                } catch (Exception e) {
+                } catch (GraphServiceException e) {
+                    user.setErrorInfo(e.getServiceError().code);
+                    emailUserRepository.save(user);
                     log.error("当前邮箱发送失败: ", e);
                 }
             }
@@ -106,10 +113,11 @@ public class MarketingEmailService implements IMarketingEmailService {
             Optional<EmailUser> optional = emailUserRepository.findById(idNum+1);
             log.info("idNum :{}.", idNum);
             if (optional.isPresent()) {
+
                 EmailUser emailUser = optional.get();
                 if (!Boolean.TRUE.equals(emailUser.getUnsubscribe())
                         && StringUtils.hasText(emailUser.getEmail())
-                        && Pattern.matches(EMAIL_MATCHER, emailUser.getEmail().trim())) {
+                        && Pattern.matches(EMAIL_MATCHER, emailUser.getEmail().trim().toLowerCase())) {
                     list.add(emailUser);
                     log.info("当前用户邮箱合法:{}，加入到待发列表", JsonUtil.stringify(emailUser));
                 }else {
@@ -127,11 +135,31 @@ public class MarketingEmailService implements IMarketingEmailService {
 
     @Override
     public boolean unSubscribe(String email) {
-        EmailUser emailUser = emailUserRepository.findFirstByEmail(email);
+        EmailUser emailUser = emailUserRepository.findFirstByEmailIgnoreCase(email.toUpperCase());
         if (emailUser != null) {
             emailUser.setUnsubscribe(true);
             emailUserRepository.save(emailUser);
         }
+        return true;
+    }
+
+    @Override
+    public boolean findErrorEmail() {
+
+        var list = emailUserRepository.findAll();
+
+        list.forEach(emailUser -> {
+            if (!Boolean.TRUE.equals(emailUser.getUnsubscribe())
+                    && StringUtils.hasText(emailUser.getEmail())
+                    && Pattern.matches(EMAIL_MATCHER, emailUser.getEmail().trim().toLowerCase())) {
+
+            }else {
+                ErrorEmailUser errorEmailUser = new ErrorEmailUser();
+                BeanUtils.copyProperties(emailUser, errorEmailUser);
+                errorEmailUserRepository.save(errorEmailUser);
+            }
+        });
+
         return true;
     }
 }
