@@ -84,14 +84,16 @@ public class MarketingEmailService implements IMarketingEmailService {
                 String templateName = isZh ? "index_table_cn.html" : "index_table.html";
                 String subject = isZh ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
                 Dict context = Dict.create()
-                        .set("name", user.getName())
+                        .set("name", user.getName().trim())
                         .set("phone", sender.tel())
                         .set("email", sender.email());
 
                 try {
-                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail());
+                    EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail().trim());
                     log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
                             redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
+                    user.setErrorInfo("Success");
+                    emailUserRepository.save(user);
                 } catch (GraphServiceException e) {
                     user.setErrorInfo(e.getServiceError().code);
                     emailUserRepository.save(user);
