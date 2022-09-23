@@ -16,7 +16,7 @@ public class AppTests {
     @Autowired
     private EmailUserRepository emailUserRepository;
 
-    boolean enable() { return true; }
+    boolean enable() { return false; }
 
     @Test
     @EnabledIf("enable")
