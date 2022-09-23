@@ -9,7 +9,7 @@ import org.junit.jupiter.api.condition.EnabledIf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+/*@SpringBootTest
 public class AppTests {
     @Autowired
     private MarketingEmailService marketingEmailService;
@@ -42,4 +42,4 @@ public class AppTests {
         Assertions.assertNotNull(emailUserRepository.findFirstByEmailIgnoreCase("alex@xpfunding.com".toUpperCase()));
 
     }
-}
+}*/
