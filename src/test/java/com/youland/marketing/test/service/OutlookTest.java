@@ -101,11 +101,11 @@ public class OutlookTest {
                 "rico@youland.com", "1-833-968-5263");
         EmailUser emailUser = new EmailUser();
         emailUser.setName("郭远宽");
-        emailUser.setEmail("guoyuankuan@126.com");
+        emailUser.setEmail("mace@youland.com");
         emailUser.setTemplate("中文");
 
         boolean isCN = "中文".equals(emailUser.getTemplate());
-        String templateName = isCN ? "index_table_cn.html" : "index_table.html";
+        String templateName = isCN ? "index_dscr_cn.html" : "index_dscr.html";
         String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
         Dict context = Dict.create()
                 .set("name", emailUser.getName())
