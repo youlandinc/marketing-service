@@ -100,13 +100,13 @@ public class OutlookTest {
         EmailSender sender = new EmailSender("0553cb68-e618-453c-b572-c77d7cc7c762", "Rico Shen",
                 "rico@youland.com", "1-833-968-5263");
         EmailUser emailUser = new EmailUser();
-        emailUser.setName("郭远宽");
+        emailUser.setName("mace");
         emailUser.setEmail("mace@youland.com");
         emailUser.setTemplate("中文");
 
         boolean isCN = "中文".equals(emailUser.getTemplate());
         String templateName = isCN ? "index_dscr_cn.html" : "index_dscr.html";
-        String subject = isCN ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
+        String subject = isCN ? "DSCR类项目最低利率，立刻查看！" : "Amazing Rate with YouLand DSCR Loan！";
         Dict context = Dict.create()
                 .set("name", emailUser.getName())
                 .set("phone", sender.tel())
