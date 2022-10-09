@@ -96,6 +96,7 @@ public class OutlookTest {
     }
 
     @Test
+    @EnabledIf("enable")
     void send_template_email() {
         EmailSender sender = new EmailSender("0553cb68-e618-453c-b572-c77d7cc7c762", "Rico Shen",
                 "rico@youland.com", "1-833-968-5263");
