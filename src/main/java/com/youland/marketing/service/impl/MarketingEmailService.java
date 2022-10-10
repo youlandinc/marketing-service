@@ -128,9 +128,12 @@ public class MarketingEmailService implements IMarketingEmailService {
                 Long newIdNum = redisTemplate.opsForValue().increment(TO_ID_KEY);
                 log.info("newIdNum:{}.",newIdNum);
             } else {
+                // 当idNum无数据时，跳过断续取下一个邮箱
+                Long newIdNum = redisTemplate.opsForValue().increment(TO_ID_KEY);
+                log.info("newIdNum:{}.",newIdNum);
                 hasData = false;
             }
-        } while (hasData && list.size() < 8);
+        } while (hasData && list.size() < 7);
 
         return list;
     }
