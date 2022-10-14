@@ -82,7 +82,7 @@ public class MarketingEmailService implements IMarketingEmailService {
 
                 boolean isZh = StringUtils.hasText(user.getTemplate()) && user.getTemplate().contains("中文");
                 String templateName = isZh ? "index_dscr_cn.html" : "index_dscr.html";
-                String subject = isZh ? "有联贷款秋季优惠！一定不能错过的最低利率！" : "Lowest Rate Ever - Call YouLand!";
+                String subject = isZh ? "DSCR类项目最低利率，立刻查看！" : "Amazing Rate with YouLand DSCR Loan!";
                 Dict context = Dict.create()
                         .set("name", user.getName().trim())
                         .set("phone", sender.tel())
