@@ -34,7 +34,7 @@ public class MarketingEmailScheduler {
         String cornConfig = "0/30 * 15-18 9-30 * ?";
         future = threadPoolTaskScheduler.schedule(() -> {
             log.info("Start send marketing email system job expression:: " + df.format(LocalDateTime.now()));
-            marketingEmailService.sendEmail();
+            // marketingEmailService.sendEmail();
             log.info("End send marketing email system job expression:: " + df.format(LocalDateTime.now()));
         }, new CronTrigger(cornConfig));
 

@@ -56,8 +56,8 @@ public class MarketingEmailService implements IMarketingEmailService {
     public boolean sendEmail() {
         if (!StringUtils.hasText(redisTemplate.opsForValue().get(TO_ID_KEY))) {
             // 初始化
-            redisTemplate.opsForValue().set(TO_ID_KEY, "0", Duration.ofDays(30));
-            redisTemplate.opsForValue().set(TOTAL_SENT_KEY, "0", Duration.ofDays(30));
+            redisTemplate.opsForValue().set(TO_ID_KEY, "0", -1);
+            redisTemplate.opsForValue().set(TOTAL_SENT_KEY, "0", -1);
         }
         String dateLimitKey = LocalDate.now() + CURRENT_SENT_KEY;
         if (!StringUtils.hasText(redisTemplate.opsForValue().get(dateLimitKey))) {
@@ -113,7 +113,7 @@ public class MarketingEmailService implements IMarketingEmailService {
         do {
             Long idNum = redisTemplate.opsForValue().increment(TO_ID_KEY, 0);
             Optional<EmailUser> optional = emailUserRepository.findById(idNum+1);
-            log.info("idNum :{}.", idNum);
+            log.info("idNum :{}, emailUser :{}.", idNum, JsonUtil.toJsonNode(optional.get()));
             if (optional.isPresent()) {
 
                 EmailUser emailUser = optional.get();
