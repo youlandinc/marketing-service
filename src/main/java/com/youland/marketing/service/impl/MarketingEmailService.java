@@ -81,7 +81,7 @@ public class MarketingEmailService implements IMarketingEmailService {
                 log.info("当前发送邮箱，发送者: {}, 接收者: {}", sender.email(), JsonUtil.stringify(user));
 
                 boolean isZh = StringUtils.hasText(user.getTemplate()) && user.getTemplate().contains("中文");
-                String templateName = isZh ? "index_dscr_cn.html" : "index_dscr.html";
+                String templateName = isZh ? "index_chris_cn.html" : "index_chris.html";
                 String subject = isZh ? "DSCR类项目最低利率，立刻查看！" : "Amazing Rate with YouLand DSCR Loan!";
                 Dict context = Dict.create()
                         .set("name", user.getName().trim())
