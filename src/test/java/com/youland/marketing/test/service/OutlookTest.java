@@ -10,12 +10,13 @@ import com.microsoft.graph.requests.GraphServiceClient;
 import com.youland.marketing.dao.entity.EmailUser;
 import com.youland.marketing.model.EmailSender;
 import com.youland.marketing.util.EmailUtil;
+import com.youland.marketing.util.JsonUtil;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIf;
 
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
@@ -122,6 +123,20 @@ public class OutlookTest {
         String email = " elias.palacios@compass.com ";
         boolean isMatches = Pattern.matches(emailMatcher, email.trim().toLowerCase());
         System.out.println(isMatches);
+    }
+
+    @Test
+    @Disabled
+    void titleSelect() {
+
+        List<Map.Entry<String,String>> titleList = Arrays.asList(
+                Map.entry("节日特惠，有联贷款最低利率已送达！","Holiday Special Rate - Call YouLand"),
+                Map.entry("有联为您送上最诚挚的节日祝福！","YouLand Season’s Greetings and Holiday Savings!"),
+                Map.entry("新年，新家，立刻查询有联贷款最低利率！","New Year, New Home, Start with YouLand Bridge Loan")
+        );
+        int index = 1%3;
+        Map.Entry entry = titleList.get(index);
+        System.out.println("index: "+index + ", key: "+entry.getKey() +", value: "+entry.getValue());
     }
 
 }

@@ -19,10 +19,7 @@ import org.springframework.util.StringUtils;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -44,7 +41,7 @@ public class MarketingEmailService implements IMarketingEmailService {
     public static List<EmailSender> senderList = Arrays.asList(
             // new EmailSender("7a3b60c5-f3e7-4a76-8e28-e447c3417963", "Jason Xue", "jason@youland.com", "10-439-2415"),
             new EmailSender("2d8b6ab6-b2ea-4e30-bfd1-f0453eeaf88d", "Leslie Li", "leslie@youland.com", "510-439-2417"),
-            new EmailSender("f3825b68-d95c-4e09-bdfb-6e1fceea640a", "Ruyi Li", "ruyi@youland.com", "415-813-7798"),
+            // new EmailSender("f3825b68-d95c-4e09-bdfb-6e1fceea640a", "Ruyi Li", "ruyi@youland.com", "415-813-7798"),
             new EmailSender("980783d2-c88f-4359-88a4-9a11b7870a20", "Angie Fang", "angie@youland.com", "1-833-968-5263"),
             new EmailSender("06333511-45f1-4f29-9a9c-e588ceb4476c", "Richard Jia", "richard@youland.com", "510-759-8888"),
             new EmailSender("bfc8af0c-25be-48f1-8c1b-2b6a6ea60c26", "Zoey Yang", "zoey@Youland.com", "1-833-968-5263"),
@@ -52,19 +49,25 @@ public class MarketingEmailService implements IMarketingEmailService {
             new EmailSender("08f870fe-c45b-42cf-81a2-9afbd46f047c", "Dorothy Feng", "dorothy@Youland.com", "1-833-968-5263")
     );
 
+    public static List<Map.Entry<String,String>> titleList = Arrays.asList(
+            Map.entry("节日特惠，有联贷款最低利率已送达！","Holiday Special Rate - Call YouLand"),
+            Map.entry("有联为您送上最诚挚的节日祝福！","YouLand Season’s Greetings and Holiday Savings!"),
+            Map.entry("新年，新家，立刻查询有联贷款最低利率！","New Year, New Home, Start with YouLand Bridge Loan")
+    );
+
     @Override
     public boolean sendEmail() {
         if (!StringUtils.hasText(redisTemplate.opsForValue().get(TO_ID_KEY))) {
             // 初始化
-            redisTemplate.opsForValue().set(TO_ID_KEY, "0", -1);
-            redisTemplate.opsForValue().set(TOTAL_SENT_KEY, "0", -1);
+            redisTemplate.opsForValue().set(TO_ID_KEY, "0");
+            redisTemplate.opsForValue().set(TOTAL_SENT_KEY, "0");
         }
         String dateLimitKey = LocalDate.now() + CURRENT_SENT_KEY;
         if (!StringUtils.hasText(redisTemplate.opsForValue().get(dateLimitKey))) {
             redisTemplate.opsForValue().set(dateLimitKey, "0", Duration.ofHours(24));
         }
 
-        final long limitNum = 3000;
+        final long limitNum = 50;
         //当天发送邮件数量超过限制值 当天不再发送
         Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey,0);
         log.info("dateLimitKey:{}.", todaySendNum);
@@ -82,13 +85,16 @@ public class MarketingEmailService implements IMarketingEmailService {
 
                 boolean isZh = StringUtils.hasText(user.getTemplate()) && user.getTemplate().contains("中文");
                 String templateName = isZh ? "index_chris_cn.html" : "index_chris.html";
-                String subject = isZh ? "DSCR类项目最低利率，立刻查看！" : "Amazing Rate with YouLand DSCR Loan!";
+                // get email title
+                Map.Entry<String, String> title = titleList.get((i+1)%3);
+                String subject = isZh ? title.getKey() : title.getValue();
                 Dict context = Dict.create()
                         .set("name", user.getName().trim())
                         .set("phone", sender.tel())
                         .set("email", sender.email());
 
                 try {
+                    Thread.sleep(3*60*1000L);
                     EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail().trim());
                     log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
                             redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
@@ -98,6 +104,8 @@ public class MarketingEmailService implements IMarketingEmailService {
                     user.setErrorInfo(e.getServiceError().code);
                     emailUserRepository.save(user);
                     log.error("当前邮箱发送失败: ", e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             return true;
@@ -133,7 +141,7 @@ public class MarketingEmailService implements IMarketingEmailService {
                 log.info("newIdNum:{}.",newIdNum);
                 hasData = false;
             }
-        } while (hasData && list.size() < 7);
+        } while (hasData && list.size() < 6);
 
         return list;
     }
