@@ -67,7 +67,7 @@ public class MarketingEmailService implements IMarketingEmailService {
             redisTemplate.opsForValue().set(dateLimitKey, "0", Duration.ofHours(24));
         }
 
-        final long limitNum = 50;
+        final long limitNum = 500;
         //当天发送邮件数量超过限制值 当天不再发送
         Long todaySendNum = redisTemplate.opsForValue().increment(dateLimitKey,0);
         log.info("dateLimitKey:{}.", todaySendNum);
