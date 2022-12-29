@@ -94,7 +94,7 @@ public class MarketingEmailService implements IMarketingEmailService {
                         .set("email", sender.email());
 
                 try {
-                    Thread.sleep(3*60*1000L);
+                    Thread.sleep(2*1000L);
                     EmailUtil.sendOutlookEmail(sender, subject, templateName, context, user.getEmail().trim());
                     log.info("当天有效发送成功数：{}, 总发送成功数：{}", redisTemplate.opsForValue().increment(dateLimitKey),
                             redisTemplate.opsForValue().increment(TOTAL_SENT_KEY));
